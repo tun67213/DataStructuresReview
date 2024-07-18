@@ -1,5 +1,7 @@
 package com.arvindhvelrajan;
 
+import java.util.NoSuchElementException;
+
 /**
  * @author arvindhvelrajan
  * @param <E> Generic variable for class
@@ -327,13 +329,24 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
 
     /**
      * @param o the Object to find the location of the first occurrence of
-     * @return the location of the first occurrence of the provided value or -1 if not found
      * @throws NullPointerException if no value is provided
+     * @return the location of the first occurrence of the provided value or -1 if not found
      */
     @Override
     public int indexOf(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(o == null)
+        {
+            throw new NullPointerException("You MUST provide a value to find the location of the first occurrence of");
+        }
+        for(int i = 0; i < this.size; i++)
+        {
+            if(this.array[i].equals(o))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -342,7 +355,7 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public boolean isEmpty()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return this.size == 0;
     }
 
     /**
@@ -351,7 +364,43 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public Iterator<E> iterator()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return new Iterator<E>()
+        {
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext()
+            {
+                return currentIndex < size;
+            }
+
+            @Override
+            public E next()
+            {
+                if(!hasNext())
+                {
+                    throw new NoSuchElementException("This iterator has reached the end of this list");
+                }
+                E value = array[currentIndex];
+                currentIndex++;
+                return value;
+            }
+
+            @Override
+            public void remove()
+            {
+                int removingIndex = currentIndex;
+                if(currentIndex != 0)
+                {
+                    currentIndex--;
+                }
+                for(int i = removingIndex; i < size - 1; i++)
+                {
+                    array[i] = array[i + 1];
+                }
+                size--;
+            }
+        };
     }
 
     /**
@@ -362,7 +411,18 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public int lastIndexOf(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(o == null)
+        {
+            throw new NullPointerException("You MUST provide a value to find the last occurrence of in this ArrayList");
+        }
+        for(int i = this.size - 1; i >= 0; i--)
+        {
+            if(this.array[i].equals(o))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -371,7 +431,99 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public ListIterator<E> listIterator()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return new ListIterator<E>()
+        {
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext()
+            {
+                return currentIndex < size;
+            }
+
+            @Override
+            public E next()
+            {
+                if(!hasNext())
+                {
+                    throw new NoSuchElementException("There are no more elements left in this list iterator");
+                }
+                E value = array[currentIndex];
+                currentIndex++;
+                return value;
+            }
+
+            @Override
+            public boolean hasPrevious()
+            {
+                return currentIndex >= 0;
+            }
+
+            @Override
+            public E previous()
+            {
+                if(!hasPrevious())
+                {
+                    throw new NoSuchElementException("There are no more elements left in this list iterator");
+                }
+                E value = array[currentIndex];
+                currentIndex--;
+                return value;
+            }
+
+            @Override
+            public int nextIndex()
+            {
+                return currentIndex;
+            }
+
+            @Override
+            public int previousIndex()
+            {
+                return currentIndex - 1;
+            }
+
+            @Override
+            public void set(E e)
+            {
+                if(e == null)
+                {
+                    throw new NullPointerException("You MUST provide a replacement value");
+                }
+                array[currentIndex] = e;
+            }
+
+            @Override
+            public void add(E e)
+            {
+                if(e == null)
+                {
+                    throw new NullPointerException("You MUST provide a value to add at this position");
+                }
+                ensureCapacity();
+                for(int i = size; i > currentIndex; i--)
+                {
+                    array[i] = array[i - 1];
+                }
+                array[currentIndex] = e;
+                size++;
+            }
+
+            @Override
+            public void remove()
+            {
+                int removingIndex = currentIndex;
+                if(currentIndex != 0)
+                {
+                    currentIndex--;
+                }
+                for(int i = removingIndex; i < size - 1; i++)
+                {
+                    array[i] = array[i + 1];
+                }
+                size--;
+            }
+        };
     }
 
     /**
@@ -382,7 +534,103 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public ListIterator<E> listIterator(int index)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(index < 0 || index >= this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        return new ListIterator<E>()
+        {
+            private int currentIndex = index;
+
+            @Override
+            public boolean hasNext()
+            {
+                return currentIndex < size;
+            }
+
+            @Override
+            public E next()
+            {
+                if(!hasNext())
+                {
+                    throw new NoSuchElementException("There are no more elements left in this list iterator");
+                }
+                E value = array[currentIndex];
+                currentIndex++;
+                return value;
+            }
+
+            @Override
+            public boolean hasPrevious()
+            {
+                return currentIndex >= 0;
+            }
+
+            @Override
+            public E previous()
+            {
+                if(!hasPrevious())
+                {
+                    throw new NoSuchElementException("There are no more elements left in this list iterator");
+                }
+                E value = array[currentIndex];
+                currentIndex--;
+                return value;
+            }
+
+            @Override
+            public int nextIndex()
+            {
+                return currentIndex;
+            }
+
+            @Override
+            public int previousIndex()
+            {
+                return currentIndex - 1;
+            }
+
+            @Override
+            public void set(E e)
+            {
+                if(e == null)
+                {
+                    throw new NullPointerException("You MUST provide a replacement value");
+                }
+                array[currentIndex] = e;
+            }
+
+            @Override
+            public void add(E e)
+            {
+                if(e == null)
+                {
+                    throw new NullPointerException("You MUST provide a value to add at this position");
+                }
+                ensureCapacity();
+                for(int i = size; i > currentIndex; i--)
+                {
+                    array[i] = array[i - 1];
+                }
+                array[currentIndex] = e;
+                size++;
+            }
+
+            @Override
+            public void remove()
+            {
+                int removingIndex = currentIndex;
+                if(currentIndex != 0)
+                {
+                    currentIndex--;
+                }
+                for(int i = removingIndex; i < size - 1; i++)
+                {
+                    array[i] = array[i + 1];
+                }
+                size--;
+            }
+        };
     }
 
     /**
@@ -394,7 +642,17 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public E remove(int index)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(index < 0 || index >= this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        E value = this.array[index];
+        for(int i = index; i < this.size - 1; i++)
+        {
+            this.array[i] = this.array[i + 1];
+        }
+        this.size--;
+        return value;
     }
 
     /**
@@ -408,7 +666,25 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public boolean remove(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(o == null)
+        {
+            throw new NullPointerException("You MUST provide a value to find the first occurrence of and remove");
+        }
+        int i = 0;
+        while(i < this.size && !(this.array[i].equals(o)))
+        {
+            i++;
+        }
+        if(i >= this.size)
+        {
+            return false;
+        }
+        for(int j = i; j < this.size - 1; j++)
+        {
+            this.array[j] = this.array[j + 1];
+        }
+        this.size--;
+        return true;
     }
 
     /**
