@@ -879,6 +879,17 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public String toString()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        StringBuilder buff = new StringBuilder();
+        buff.append("[");
+        for(int i = 0; i < this.size; i++)
+        {
+            buff.append(this.array[i]);
+            if(i != this.size - 1)
+            {
+                buff.append(", ");
+            }
+        }
+        buff.append("]");
+        return buff.toString();
     }
 }
