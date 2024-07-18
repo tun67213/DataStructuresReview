@@ -97,6 +97,15 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     }
 
     /**
+     * @return a shallow copy of this ArrayList object
+     */
+    @Override
+    public Object clone()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
      * @param o the Object to find and remove
      * @return true if this list contains the provided value, false otherwise
      * @throws NullPointerException if no Object is provided
