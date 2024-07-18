@@ -1,6 +1,6 @@
 package com.arvindhvelrajan;
 
-public class AbstractCollection
+public class AbstractCollection implements Collection<E>
 {
 
 }
