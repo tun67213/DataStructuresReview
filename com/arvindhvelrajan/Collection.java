@@ -4,7 +4,7 @@ package com.arvindhvelrajan;
  * @author arvindhvelrajan
  * @param <E> Generic variable for this Interface
  */
-public interface Collection<E>
+public interface Collection<E> extends Iterable<E>
 {
     /**
      * @param e Value to be added to this Collection
