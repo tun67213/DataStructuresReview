@@ -70,7 +70,14 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public boolean add(E e)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(e == null)
+        {
+            throw new NullPointerException("You MUST provide a value to add to this ArrayList");
+        }
+        ensureCapacity();
+        this.array[this.size] = e;
+        this.size++;
+        return true;
     }
 
     /**
