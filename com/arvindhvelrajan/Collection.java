@@ -1,4 +1,10 @@
 package com.arvindhvelrajan;
 
-public interface Collection {
+/**
+ * @author arvindhvelrajan
+ * @param <E> Generic variable for this Interface
+ */
+public interface Collection<E>
+{
+    
 }
