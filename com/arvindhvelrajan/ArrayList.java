@@ -316,7 +316,13 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public int hashCode()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        int hashcode = 1;
+        for(int i = 0; i < this.size; i++)
+        {
+            E item = this.array[i];
+            hashcode = 31 * hashcode + ((item == null) ? 0 : item.hashCode());
+        }
+        return hashcode;
     }
 
     /**
