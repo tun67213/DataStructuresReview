@@ -729,10 +729,38 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
      * @throws NullPointerException if no Collection is provided
      * @code Keeps in this list all its elements that are contained in the specified Collection
      */
+    @SuppressWarnings("unchecked")
     @Override
     public boolean retainAll(Collection<?> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a Collection of values to remove from this ArrayList");
+        }
+        if(c.isEmpty())
+        {
+            this.size = 0;
+            this.capacity = 10;
+            this.array = (E[]) new Object[this.capacity];
+            return true;
+        }
+        boolean modified = false;
+        int i = 0;
+        while(i < this.size)
+        {
+            if(!(c.contains(this.array[i])))
+            {
+                for(int j = i; j < this.size - 1; j++)
+                {
+                    this.array[j] = this.array[j + 1];
+                }
+                i--;
+                this.size--;
+                modified = true;
+            }
+            i++;
+        }
+        return modified;
     }
 
     /**
