@@ -117,7 +117,21 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public boolean addAll(Collection<? extends E> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a Collection of values to add to this ArrayList");
+        }
+        if(c.isEmpty())
+        {
+            return false;
+        }
+        Iterator<? extends E> iterator = c.iterator();
+        while(iterator.hasNext())
+        {
+            this.array[this.size] = iterator.next();
+            this.size++;
+        }
+        return true;
     }
 
     /**
@@ -130,10 +144,34 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
      * @code Adds the values in the provided Collection to the specified location in this List in
      * sequential order
      */
+    @SuppressWarnings("unchecked")
     @Override
     public boolean addAll(int index, Collection<? extends E> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a Collection of values to add to this ArrayList");
+        }
+        if(index < 0 || index > this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        if(c.isEmpty())
+        {
+            return false;
+        }
+        E[] values = (E[]) c.toArray();
+        for(int i = values.length - 1; i >= 0; i--)
+        {
+            ensureCapacity();
+            for(int j = this.size; j > index; j--)
+            {
+                this.array[j] = this.array[j - 1];
+            }
+            this.array[index] = values[i];
+            this.size++;
+        }
+        return true;
     }
 
     /**
