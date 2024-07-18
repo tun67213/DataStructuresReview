@@ -208,7 +208,18 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public boolean contains(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(o == null)
+        {
+            throw new NullPointerException("You MUST provide a value to find the existence of in this ArrayList");
+        }
+        for(int i = 0; i < this.size; i++)
+        {
+            if(this.array[i].equals(o))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -220,7 +231,33 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public boolean containsAll(Collection<?> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a collection of values to find the existence of in this ArrayList");
+        }
+        if(c.isEmpty())
+        {
+            return true;
+        }
+        Iterator<?> iterator = c.iterator();
+        boolean found = false;
+        while(iterator.hasNext())
+        {
+            Object value = iterator.next();
+            for(int i = 0; i < this.size; i++)
+            {
+                if(this.array[i].equals(value))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -231,18 +268,46 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public boolean equals(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(o == null)
+        {
+            throw new NullPointerException("You MUST provide a Data Structure to compare with this one");
+        }
+        if(!(o instanceof ArrayList))
+        {
+            throw new ClassCastException("You MUST provide an ArrayList to compare with this one for equality");
+        }
+        if(this == o)
+        {
+            return true;
+        }
+        ArrayList<?> other = (ArrayList<?>) o;
+        if(this.size != other.size)
+        {
+            return false;
+        }
+        for(int i = 0; i < this.size; i++)
+        {
+            if(!(this.array[i].equals(other.array[i])))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
      * @param index the location at which to retrieve the value from
+     * throws IndexOutOfBoundsException if index is provided, but is out of bounds
      * @return the value at the provided index
-     * @throws IndexOutOfBoundsException if index is provided, but is out of bounds
      * @code Returns the element at the specified index.
      */
     public E get(int index)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(index < 0 || index >= this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        return this.array[index];
     }
 
     /**
