@@ -6,5 +6,8 @@ package com.arvindhvelrajan;
  */
 public interface Iterable<T>
 {
-
+    /**
+     * @return an iterator over a set of elements of type T
+     */
+    Iterator<T> iterator();
 }
