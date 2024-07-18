@@ -177,10 +177,13 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     /**
      * @code Removes all the elements from this List
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void clear()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        this.size = 0;
+        this.capacity = 10;
+        this.array = (E[]) new Object[this.capacity];
     }
 
     /**
@@ -189,7 +192,12 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public Object clone()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        ArrayList<E> list = new ArrayList<>();
+        for(int i = 0; i < this.size; i++)
+        {
+            list.add(this.array[i]);
+        }
+        return list;
     }
 
     /**
