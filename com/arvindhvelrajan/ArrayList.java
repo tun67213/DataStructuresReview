@@ -870,7 +870,7 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
      */
     public void trimToSize()
     {
-
+        this.capacity = this.size;
     }
 
     /**
