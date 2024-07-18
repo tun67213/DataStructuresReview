@@ -6,12 +6,16 @@ package com.arvindhvelrajan;
  */
 public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializable
 {
+    private int size;
+    private int capacity;
+    private E[] array;
+
     /**
      * @code Creates an empty ArrayList with default values for variables
      */
     public ArrayList()
     {
-
+        
     }
 
     /**
