@@ -1,4 +1,10 @@
 package com.arvindhvelrajan;
 
-public interface Iterator {
+/**
+ * @author arvindhvelrajan
+ * @param <E> Generic variable to run this interface on any data type
+ */
+public interface Iterator<E>
+{
+    
 }
