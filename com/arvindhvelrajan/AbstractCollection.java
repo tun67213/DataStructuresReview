@@ -4,7 +4,7 @@ package com.arvindhvelrajan;
  * @author arvindhvelrajan
  * @param <E> Generic Variable for this class
  */
-public class AbstractCollection<E> implements Collection<E>
+public abstract class AbstractCollection<E> implements Collection<E>
 {
     /**
      * @code Default constructor for this class
