@@ -90,7 +90,21 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public void add(int index, E element)
     {
-
+        if(element == null)
+        {
+            throw new NullPointerException("You MUST provide a value to add to this ArrayList");
+        }
+        if(index < 0 || index > this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        ensureCapacity();
+        for(int i = this.size; i > index; i--)
+        {
+            this.array[i] = this.array[i - 1];
+        }
+        this.array[index] = element;
+        this.size++;
     }
 
     /**
