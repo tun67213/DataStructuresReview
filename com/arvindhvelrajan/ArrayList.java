@@ -774,7 +774,17 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
      */
     public E set(int index, E element)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(element == null)
+        {
+            throw new NullPointerException("You MUST provide a replacement value");
+        }
+        if(index < 0 || index >= this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        E value = this.array[index];
+        this.array[index] = element;
+        return value;
     }
 
     /**
@@ -783,7 +793,7 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public int size()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return this.size;
     }
 
     /**
@@ -794,16 +804,40 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
      */
     public List<E> subList(int fromIndex, int toIndex)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(fromIndex < 0 && toIndex > this.size)
+        {
+            throw new IndexOutOfBoundsException("Indexes " + fromIndex + " and " + toIndex + " are out of bounds");
+        }
+        else if(fromIndex < 0)
+        {
+            throw new IndexOutOfBoundsException("Index " + fromIndex + " is out of bounds");
+        }
+        else if(toIndex > this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + toIndex + " is out of bounds");
+        }
+        else if(fromIndex > toIndex)
+        {
+            throw new IllegalArgumentException("fromIndex " + fromIndex + " cannot be greater than toIndex " + toIndex);
+        }
+        ArrayList<E> list = new ArrayList<>();
+        for(int i = fromIndex; i < toIndex; i++)
+        {
+            list.add(this.array[i]);
+        }
+        return list;
     }
 
     /**
      * @return an array containing all the elements in this list in proper sequence
      */
+    @SuppressWarnings("unchecked")
     @Override
     public Object[] toArray()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        E[] values = (E[]) new Object[this.size];
+        System.arraycopy(this.array, 0, values, 0, this.size);
+        return values;
     }
 
     /**
@@ -816,7 +850,19 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public <T> T[] toArray(T[] a)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(a.length < this.size)
+        {
+            a = (T[]) java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), this.size);
+        }
+        else
+        {
+            System.arraycopy(this.array, 0, a, 0, this.size);
+            if(a.length > this.size)
+            {
+                a[this.size] = null;
+            }
+        }
+        return a;
     }
 
     /**
