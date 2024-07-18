@@ -1,7 +1,10 @@
 package com.arvindhvelrajan;
 
-
-public interface Queue
+/**
+ * @author arvindhvelrajan
+ * @param <E> Generic variable for this interface
+ */
+public interface Queue<E> extends Collection<E>
 {
-    
+
 }
