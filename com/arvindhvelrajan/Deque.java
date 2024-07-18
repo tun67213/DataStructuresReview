@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
  * @author arvindhvelrajan
  * @param <E> Generic Variable
  */
-public interface Deque<E>
+public interface Deque<E> extends Queue<E>
 {
     /**
      * @param e Value to be added to this Queue
