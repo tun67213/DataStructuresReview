@@ -696,7 +696,27 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public boolean removeAll(Collection<?> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a Collection of values to remove from this ArrayList");
+        }
+        boolean modified = false;
+        int i = 0;
+        while(i < this.size)
+        {
+            if(c.contains(this.array[i]))
+            {
+                for(int j = i; j < this.size - 1; j++)
+                {
+                    this.array[j] = this.array[j + 1];
+                }
+                i--;
+                this.size--;
+                modified = true;
+            }
+            i++;
+        }
+        return modified;
     }
 
     /**
