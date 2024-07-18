@@ -4,7 +4,7 @@ package com.arvindhvelrajan;
  * @author arvindhvelrajan
  * @param <E> Generic variable for this class
  */
-public class AbstractList<E> extends AbstractCollection<E> implements List<E>
+public abstract class AbstractList<E> extends AbstractCollection<E> implements List<E>
 {
     /**
      * @code Constructor for this class
