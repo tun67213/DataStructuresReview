@@ -700,6 +700,10 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
         {
             throw new NullPointerException("You MUST provide a Collection of values to remove from this ArrayList");
         }
+        if(c.isEmpty())
+        {
+            return false;
+        }
         boolean modified = false;
         int i = 0;
         while(i < this.size)
