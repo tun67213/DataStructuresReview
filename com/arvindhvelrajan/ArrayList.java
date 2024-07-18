@@ -4,7 +4,332 @@ package com.arvindhvelrajan;
  * @author arvindhvelrajan
  * @param <E> Generic variable for class
  */
-public class ArrayList<E>
+public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializable
 {
+    /**
+     * @code Creates an empty ArrayList with default values for variables
+     */
+    public ArrayList()
+    {
 
+    }
+
+    /**
+     * @param c Collection of values to initialize this ArrayList with
+     * @throws NullPointerException if no Collection of values is provided
+     * @code Initializes this ArrayList with values from the provided Collection
+     */
+    public ArrayList(Collection<? extends E> c)
+    {
+
+    }
+
+    /**
+     * @code Ensures that the array has enough space and if not, reallocates
+     *       the values in this array into a new one
+     */
+    public void ensureCapacity()
+    {
+
+    }
+
+    /**
+     * @param e the value to be added to this List
+     * @return true if this value is added without any exceptions
+     * @throws NullPointerException if no value is provided
+     * @code Adds the specified value to the end of this List
+     */
+    @Override
+    public boolean add(E e)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param index   the location at which to add the provided value
+     * @param element the value to be added to the specified location in this List
+     * @throws NullPointerException      if no value is provided
+     * @throws IndexOutOfBoundsException if index is provided, but is out of bounds
+     * @code Adds the specified value to the specified location in this List
+     */
+    @Override
+    public void add(int index, E element)
+    {
+
+    }
+
+    /**
+     * @param c Collection of values to be added
+     * @return true if the provided Collection is not empty and values are added,
+     * false Collection is empty
+     * @throws NullPointerException if no Collection is provided
+     * @code Adds the values in the provided Collection to the end of this List in sequential order
+     */
+    @Override
+    public boolean addAll(Collection<? extends E> c)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param index The location at which to add the specified collection
+     * @param c     Collection of values to be added to this List
+     * @return true if the index is within appropriate range and a proper collection
+     * with values is provided, false if Collection is empty
+     * @throws NullPointerException      if no Collection is provided
+     * @throws IndexOutOfBoundsException if index is provided, but is out of bounds
+     * @code Adds the values in the provided Collection to the specified location in this List in
+     * sequential order
+     */
+    @Override
+    public boolean addAll(int index, Collection<? extends E> c)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @code Removes all the elements from this List
+     */
+    @Override
+    public void clear()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param o the Object to find and remove
+     * @return true if this list contains the provided value, false otherwise
+     * @throws NullPointerException if no Object is provided
+     */
+    @Override
+    public boolean contains(Object o)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param c Collection of values to search the existence of in this List
+     * @return true if the Collection has values and the values in the Collection are found in
+     * this List, false otherwise
+     * @throws NullPointerException if no Collection is provided
+     */
+    @Override
+    public boolean containsAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param o the Object to compare for equality
+     * @return true if the provided Object is exactly the same as this List
+     * @throws NullPointerException if no Object is provided
+     */
+    @Override
+    public boolean equals(Object o)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param index the location at which to retrieve the value from
+     * @return the value at the provided index
+     * @throws IndexOutOfBoundsException if index is provided, but is out of bounds
+     * @code Returns the element at the specified index.
+     */
+    public E get(int index)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @return the hash code value for this list
+     */
+    @Override
+    public int hashCode()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param o the Object to find the location of the first occurrence of
+     * @return the location of the first occurrence of the provided value or -1 if not found
+     * @throws NullPointerException if no value is provided
+     */
+    @Override
+    public int indexOf(Object o)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @return true if this list is empty, false otherwise
+     */
+    @Override
+    public boolean isEmpty()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @return an iterator over the elements in this list in proper sequence
+     */
+    @Override
+    public Iterator<E> iterator()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param o the Object to find the location of the last occurrence of
+     * @return the location of the last occurrence of the provided value or -1 if not found
+     * @throws NullPointerException if no value is provided
+     */
+    @Override
+    public int lastIndexOf(Object o)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @return a list iterator over the elements in this list
+     */
+    @Override
+    public ListIterator<E> listIterator()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param index the location at which to start the List Iterator
+     * @return a list iterator over the elements in this list starting at the provided index
+     * @throws IndexOutOfBoundsException if index is provided, but is out of bounds
+     */
+    @Override
+    public ListIterator<E> listIterator(int index)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param index the location at which to remove a value
+     * @return the value previously at the provided index
+     * @throws IndexOutOfBoundsException if index is provided, but is out of bounds
+     * @code The function removes and returns the value at the specified index in this List.
+     */
+    @Override
+    public E remove(int index)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param o the Object to find and remove the first occurrence of from this List
+     * @return true if this List has been modified, false otherwise
+     * @throws NullPointerException if no Object is provided
+     * @code Finds and removes the first occurrence of the value provided, given that the user
+     * provided it. If the item was not found, it returns false. If it WAS found and removed,
+     * then the function returns true.
+     */
+    @Override
+    public boolean remove(Object o)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param c Collection of values to remove if found
+     * @return true if this List has been modified, false otherwise
+     * @throws NullPointerException if no Collection is provided
+     * @code Removes from the list all its elements that are contained in the specified Collection
+     */
+    @Override
+    public boolean removeAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param c Collection of values to keep if found
+     * @return true if this List has been modified, false otherwise
+     * @throws NullPointerException if no Collection is provided
+     * @code Keeps in this list all its elements that are contained in the specified Collection
+     */
+    @Override
+    public boolean retainAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param index   the location at which to change values
+     * @param element the value to use as replacement
+     * @return the previous value at the specified index
+     * @throws NullPointerException      if no value is provided as replacement
+     * @throws IndexOutOfBoundsException if index is provided but out of bounds
+     * @code Replaces the value already existent with the provide value, returning
+     * value that was previously there
+     */
+    public E set(int index, E element)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @return the number of elements in this list
+     */
+    @Override
+    public int size()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param fromIndex the starting location from which to create this subList
+     * @param toIndex   the ending location from which to create this subList
+     * @throws IndexOutOfBoundsException if either is out of bounds
+     * @throws IllegalArgumentException  if fromIndex is greater than 19
+     */
+    public List<E> subList(int fromIndex, int toIndex)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @return an array containing all the elements in this list in proper sequence
+     */
+    @Override
+    public Object[] toArray()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param <T> New Generic return type matching that of the specified array
+     * @param a   array into which to copy the elements in this List
+     * @return an array containing all the elements in this list in proper sequence; runtime type
+     * of the returned array is that of the specified array
+     * @throws NullPointerException if no array 'a' is provided
+     */
+    @Override
+    public <T> T[] toArray(T[] a)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @code Trims the capacity of this ArrayList instance to be the list's current size
+     */
+    public void trimToSize()
+    {
+
+    }
+
+    /**
+     * @return a String representation of this List
+     */
+    @Override
+    public String toString()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }
