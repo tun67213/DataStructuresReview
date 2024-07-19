@@ -464,7 +464,70 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public Iterator<E> descendingIterator()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return new Iterator<E>()
+        {
+            private Node<E> current;
+            private int currentIndex;
+
+            {
+                current = tail;
+                currentIndex = size - 1;
+            }
+
+            @Override
+            public boolean hasNext()
+            {
+                return currentIndex >= 0;
+            }
+
+            @Override
+            public E next()
+            {
+                if(!hasNext())
+                {
+                    throw new NoSuchElementException("No more elements to iterate");
+                }
+                E value = current.data;
+                current = current.previous;
+                currentIndex--;
+                return value;
+            }
+
+            @Override
+            public void remove()
+            {
+                Node<E> removingNode = current;
+                if(head.next == null)
+                {
+                    head = null;
+                    tail = null;
+                    current = null;
+                }
+                else if(currentIndex == 0)
+                {
+                    head = head.next;
+                    removingNode.next = null;
+                    head.previous = null;
+                    current = head;
+                }
+                else if(currentIndex == size - 1)
+                {
+                    tail = tail.previous;
+                    removingNode.previous = null;
+                    tail.next = null;
+                    current = tail;
+                }
+                else
+                {
+                    current = current.previous;
+                    removingNode.previous.next = removingNode.next;
+                    removingNode.next.previous = removingNode.previous;
+                    removingNode.previous = null;
+                    removingNode.next = null;
+                }
+                size--;
+            }
+        };
     }
 
     /**
