@@ -327,3 +327,30 @@ They feature the following functions:
     Returns an array containing all the elements in this list in proper sequence where the runtime of the returned array is the same as that of the provided array.
 #### String toString()
     Returns a String representation of this List so that it is readable to the user on the command line.
+
+
+### ArrayList.java
+
+This class is the implementation for the ArrayList data structure using generics, i.e., it acccommodates any data type.
+
+#### Private Variables
+
+##### private int size
+    Keeps track of the number of elements currently in this ArrayList.
+##### private int capacity
+    Keeps track of the maximum number of elements the array representing this ArrayList can hold.
+##### private E[] array
+    An array that holds all the elements added to this ArrayList.
+
+
+#### Constructors
+
+##### public ArrayList()
+    Creates an empty ArrayList.
+    Initializes the size to 0, the capacity to 10, and then creates an array with the "capacity" number of values to accommodate.
+##### public ArrayList(Collection<? extends E> c)
+    Throws a NullPointerException() if no Collection is provided.
+    Initializes the size to 0 and the capacity to 10, just like the default constructor.
+    Then, if the provided Collection is NOT empty, then reassigns size to be the number of values in the Collection and capacity to be 1.5 times that.
+##### public ArrayList(int initialCapacity)
+    If no 
