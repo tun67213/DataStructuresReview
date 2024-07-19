@@ -69,37 +69,37 @@ Those functions are as follows:
     If the user provides an item, the list will search for it index by index.
         If found, it will return true immediately.
         If it has iterated through the whole list, it means that the value does not exist in this Collection, returning false. 
-### boolean containsAll(Collection<?> c)
+#### boolean containsAll(Collection<?> c)
     If the user does not provide a Collection of values, then the function throws an exception.
     If the user provides a Collection, then using the Collection's iterator() function, the program iterates through all the values and checks for existence in this Collection. If one is not found, immediately returns false. If all are found, i.e. the iterator has reached the end, return true.
-### boolean equals(Object o)
+#### boolean equals(Object o)
     If the user does not provide an Object to compare with, the function throws an exception.
     If the user provides an Object, then it checks if the object is of the same type as the Collection that is using it.
         If not, then the function throws an error.
         If so, then it checks if the Collections are the same
-### int hashCode()
+#### int hashCode()
     An overriden function that returns a hash code value for this collection based on the elements in this Collection
-### boolean isEmpty()
+#### boolean isEmpty()
     Returns true if this Collection is empty, false otherwise
-### Iterator<E> iterator()
+#### Iterator<E> iterator()
     Returns a Iterator of type E that runs through all the values in this Collection
-### boolean remove(Object o)
+#### boolean remove(Object o)
     If the user fails to provide an Object, throws an exception.
     If the user provides an Object but is not found in this Collection, returns false.
     If the user provides an Object existent in this Collection, finds and removes the first occurrence of the provided Object.
-### boolean removeAll(Collection<?> c)
+#### boolean removeAll(Collection<?> c)
     If the user fails to provide a Collection, throws an exception.
     If the user provides a Collection with no values in it, returns false.
     If any value in the provided collection exists in this Collection, removes the value from this Collection.
     If any change was made to this Collection (i.e. at least one value was removed), then the function returns true. If no changes were made, the function returns false.
-### boolean retainAll(Collection<?> c)
+#### boolean retainAll(Collection<?> c)
     Similar to removeAll(), if the user fails to provide a Collection, throws an exception.
     If the user provides a Collection with no values in it, clears the Collection of all values and returns true.
     If this Collection contains any values NOT in the provided Collection, removes it from this Collection.
     Same as above, returns true if any change was made to this Collection, false otherwise.
-### int size()
+#### int size()
     Returns the number of values in this Collection
-### Object[] toArray()
+#### Object[] toArray()
     Returns an array that is of the same size as this Collection that contains all the values in this Collection
-### <T> T[] toArray(T[] a)
+#### <T> T[] toArray(T[] a)
     Using a generic variable T, it creates an array that is of the same runtime as the variable T that is provided by modifying the array a such that it fits all the values in this Collection at the time it is called.
