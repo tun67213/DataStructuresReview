@@ -1763,7 +1763,14 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public Object[] toArray()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        Object[] newArray = new Object[this.size];
+        int currentSize = 0;
+        for(Node<E> current = head; current != null; current = current.next)
+        {
+            newArray[currentSize] = current.data;
+            currentSize++;
+        }
+        return newArray;
     }
 
     /**
@@ -1773,10 +1780,24 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      * of the returned array is that of the specified array
      * @throws NullPointerException if no array 'a' is provided
      */
+    @SuppressWarnings("unchecked")
     @Override
     public <T> T[] toArray(T[] a)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(a.length < this.size)
+        {
+            a = (T[]) java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), this.size);
+        }
+        Node<E> current = head;
+        for(int i = 0; i < this.size; i++)
+        {
+            a[i] = (T) current.data;
+        }
+        if(a.length > this.size)
+        {
+            a[this.size] = null;
+        }
+        return a;
     }
 
     /**
