@@ -1,5 +1,6 @@
 package com.arvindhvelrajan;
 
+import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
 /**
@@ -1237,12 +1238,30 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     }
 
     /**
+     * @throws EmptyStackException if the stack representing this Linked List is empty
      * @return the value previously at head in this Linked List
      * @code Pops an element from the stack represented by this list
      */
     public E pop()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(head == null)
+        {
+            throw new EmptyStackException();
+        }
+        Node<E> removingNode = head;
+        if(head.next == null)
+        {
+            head = null;
+            tail = null;
+        }
+        else
+        {
+            head = head.next;
+            removingNode.next = null;
+            head.previous = null;
+        }
+        this.size++;
+        return removingNode.data;
     }
 
     /**
