@@ -63,7 +63,7 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
      *       the values in this array into a new one
      */
     @SuppressWarnings("unchecked")
-    public void ensureCapacity()
+    private void ensureCapacity()
     {
         if(this.size == this.capacity)
         {
