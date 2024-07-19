@@ -353,4 +353,54 @@ This class is the implementation for the ArrayList data structure using generics
     Initializes the size to 0 and the capacity to 10, just like the default constructor.
     Then, if the provided Collection is NOT empty, then reassigns size to be the number of values in the Collection and capacity to be 1.5 times that.
 ##### public ArrayList(int initialCapacity)
-    If no 
+    Initializes the capacity with the provided initial capacity, keeping the size the same, and using this capacity to create a new array with a bigger size allocation.
+
+
+#### Functions
+
+##### private void ensureCapacity()
+    Checks if the number of elements currently in this array fill up the array, and if so, creates a new array, 
+        allocating half the amount more space in the array
+##### public boolean add(E e)
+    If no element e is provided, throws a NullPointerException() 
+        with an error message stating that an element is required.
+    If an element is provided, uses the ensureCapacity() function above to make sure that enough space is there 
+        in the array, and then adds it to the end of a list of values already in this array, if any.
+    At the end, it increments the size of this ArrayList by 1.
+##### public void add(int index, E element)
+    If no element is provided, throws a NullPointerException() 
+        with an error message stating that an element is required.
+    If an element is provided, but index is out of bounds, throws an IndexOutOfBoundsException() 
+        with an error message stating that the provided index was out of bounds, including the index in the error message.
+    If both were provided and had no problems, ensuring that there is enough space, 
+        gives space for the element to go into the specified index and places it there.
+    At the end, it increments the size of this ArrayList by 1.
+##### public boolean addAll(Collection<? extends E> c)
+    If no Collection is provided, throws a NullPointerException() 
+        with an error message stating that a Collection is required.
+    If a Collection IS provided, but there are no values in the Collection, returns false immediately.
+    If the Collection contains values, then for EACH element added, 
+        uses the private ensureCapacity() function above to make sure there is enough space for the element to go in.
+    For each value added, increment the size by 1.
+    Finally, since all is complete, return true.
+#### public boolean addAll(int index, Collection<? extends E> c)
+    If no Collection is provided, throws a NullPointerException() 
+        with an error message stating that a Collection is required.
+    If an index IS provided, but is out of bounds, throws an IndexOutOfBoundsException() 
+        with an error message stating that the provided index is out of bounds, INCLUDING the provided index.
+    If all is valid, then, as a first step, 
+        converts the provided Collection into an array using the toArray() method in c.
+    Afterwards, the program navigates to the END of the array representing this ArrayList, and, 
+        with each call to ensureCapacity(), moves the values one position to the right, ensuring a secure spot for
+        the value to be added in this ArrayList.
+#### public void clear()
+    Simply empties this ArrayList, resetting it to be similar to when the user calls the default constructor 
+        (i.e. List<E> list = new ArrayList<E>();)
+#### public Object clone()
+    Creates a shallow clone of this ArrayList object.
+#### public boolean contains(Object o)
+    For starters, if no Object is provided by the user, throws a NullPointerException().
+    If the user DOES provide an Object, searches for it.
+    If found, immediately returns true.
+    Until then, iterates through the rest of this list.
+    If iteration finishes, then the provided Object was not found, so the program returns false.
