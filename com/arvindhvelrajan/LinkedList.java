@@ -1454,7 +1454,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     {
         if(o == null)
         {
-            throw new NullPointerException("You MUST provide a value to find and remove the first occurrence of");
+            throw new NullPointerException("You MUST provide a value to find and remove the first occurrence of from this Linked List");
         }
         Node<E> removingNode = head;
         while(removingNode != null && !(removingNode.data.equals(o)))
