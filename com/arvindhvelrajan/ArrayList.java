@@ -854,13 +854,10 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
         {
             a = (T[]) java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), this.size);
         }
-        else
+        System.arraycopy(this.array, 0, a, 0, this.size);
+        if(a.length > this.size)
         {
-            System.arraycopy(this.array, 0, a, 0, this.size);
-            if(a.length > this.size)
-            {
-                a[this.size] = null;
-            }
+            a[this.size] = null;
         }
         return a;
     }
