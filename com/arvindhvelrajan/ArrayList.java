@@ -800,7 +800,7 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
      * @param fromIndex the starting location from which to create this subList
      * @param toIndex   the ending location from which to create this subList
      * @throws IndexOutOfBoundsException if either is out of bounds
-     * @throws IllegalArgumentException  if fromIndex is greater than 19
+     * @throws IllegalArgumentException  if fromIndex is greater than toIndex
      */
     public List<E> subList(int fromIndex, int toIndex)
     {
