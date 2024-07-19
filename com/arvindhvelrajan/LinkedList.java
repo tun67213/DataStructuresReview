@@ -708,8 +708,8 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
 
     /**
      * @param o the Object to find the location of the last occurrence of
-     * @return the location of the last occurrence of the provided value or -1 if not found
      * @throws NullPointerException if no value is provided
+     * @return the location of the last occurrence of the provided value or -1 if not found
      */
     @Override
     public int lastIndexOf(Object o)
