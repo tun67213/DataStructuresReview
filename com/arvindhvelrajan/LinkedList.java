@@ -536,7 +536,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E element()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(head == null)
+        {
+            throw new NoSuchElementException("This Linked List is empty");
+        }
+        return head.data;
     }
 
     /**
