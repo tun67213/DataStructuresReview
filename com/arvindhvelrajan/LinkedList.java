@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  */
 public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, Serializable
 {
-    private class Node<E>
+    private static class Node<E>
     {
         private Node<E> previous;
         private E data;
@@ -431,7 +431,32 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public boolean equals(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(this == o)
+        {
+            return true;
+        }
+        if(o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+        LinkedList<?> that = (LinkedList<?>) o;
+        if(this.size != that.size)
+        {
+            return false;
+        }
+        Node<E> current = head;
+        Node<?> current2 = that.head;
+
+        while(current != null && current2 != null)
+        {
+            if(!(current.data.equals(current2.data)))
+            {
+                return false;
+            }
+            current = current.next;
+            current2 = current2.next;
+        }
+        return true;
     }
 
     /**
