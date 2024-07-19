@@ -1292,6 +1292,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
 
     /**
      * @return the value in the Node previous pointed to by head
+     * @throws NoSuchElementException if this Linked List is empty
      * @code Removes the Node pointed to by head. If it is the only value, reassigns
      *       head to null and tail to null. If not, reassigns it to the next value in
      *       this Linked List.
