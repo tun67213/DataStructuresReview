@@ -1299,7 +1299,24 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E remove()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(head == null)
+        {
+            throw new NoSuchElementException("This Linked List is empty");
+        }
+        Node<E> removingNode = head;
+        if(head.next == null)
+        {
+            head = null;
+            tail = null;
+        }
+        else
+        {
+            head = head.next;
+            removingNode.next = null;
+            head.previous = null;
+        }
+        this.size--;
+        return removingNode.data;
     }
 
     /**
@@ -1311,7 +1328,42 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public E remove(int index)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(index < 0 || index >= this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        Node<E> removingNode = head;
+        if(head.next == null)
+        {
+            head = null;
+            tail = null;
+        }
+        else if(index == 0)
+        {
+            head = head.next;
+            removingNode.next = null;
+            head.previous = null;
+        }
+        else if(index == this.size - 1)
+        {
+            removingNode = tail;
+            tail = tail.previous;
+            removingNode.previous = null;
+            tail.next = null;
+        }
+        else
+        {
+            for(int i = 0; i < index; i++)
+            {
+                removingNode = removingNode.next;
+            }
+            removingNode.previous.next = removingNode.next;
+            removingNode.next.previous = removingNode.previous;
+            removingNode.previous = null;
+            removingNode.next = null;
+        }
+        this.size--;
+        return removingNode.data;
     }
 
     /**
@@ -1323,7 +1375,45 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public boolean remove(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(o == null)
+        {
+            throw new NullPointerException("You MUST provide a value to find and remove the first occurrence of");
+        }
+        Node<E> removingNode = head;
+        while(removingNode != null && !(removingNode.data.equals(o)))
+        {
+            removingNode = removingNode.next;
+        }
+        if(removingNode == null)
+        {
+            return false;
+        }
+        else if(removingNode.previous == null && removingNode.next == null)
+        {
+            head = null;
+            tail = null;
+        }
+        else if(removingNode.previous == null)
+        {
+            head = head.next;
+            removingNode.next = null;
+            head.previous = null;
+        }
+        else if(removingNode.next == null)
+        {
+            tail = tail.previous;
+            removingNode.previous = null;
+            tail.next = null;
+        }
+        else
+        {
+            removingNode.previous.next = removingNode.next;
+            removingNode.next.previous = removingNode.previous;
+            removingNode.previous = null;
+            removingNode.next = null;
+        }
+        this.size--;
+        return true;
     }
 
     /**
