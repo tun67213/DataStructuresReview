@@ -298,7 +298,23 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public void addFirst(E e)
     {
-
+        if(e == null)
+        {
+            throw new NullPointerException("You MUST provide a value to add as the head Node to this Linked List");
+        }
+        Node<E> newNode = new Node<>(e);
+        if(head == null)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            head.previous = newNode;
+            newNode.next = head;
+            head = head.previous;
+        }
+        this.size++;
     }
 
     /**
@@ -308,7 +324,23 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public void addLast(E e)
     {
-
+        if(e == null)
+        {
+            throw new NullPointerException("You MUST provide a value to add as the tail Node to this Linked List");
+        }
+        Node<E> newNode = new Node<>(e);
+        if(tail == null)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            tail.next = newNode;
+            newNode.previous = tail;
+            tail = tail.next;
+        }
+        this.size++;
     }
 
     /**
@@ -317,7 +349,9 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public void clear()
     {
-
+        this.size = 0;
+        head = null;
+        tail = null;
     }
 
     /**
@@ -326,7 +360,12 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public Object clone()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        LinkedList<E> list = new LinkedList<>();
+        for(Node<E> current = head; current != null; current = current.next)
+        {
+            list.add(current.data);
+        }
+        return list;
     }
 
     /**
@@ -336,6 +375,29 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     @Override
     public boolean contains(Object o)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param c Collection of values to search the existence of in this List
+     * @return true if the Collection has values and the values in the Collection are found in
+     * this List, false otherwise
+     * @throws NullPointerException if no Collection is provided
+     */
+    @Override
+    public boolean containsAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @param o the Object to compare for equality
+     * @return true if the provided Object is exactly the same as this List
+     * @throws NullPointerException if no Object is provided
+     */
+    @Override
+    public boolean equals(Object o)
     {
         throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -383,6 +445,15 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      * @return the value at the tail node in this Linked List
      */
     public E getLast()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    /**
+     * @return the hash code value for this list
+     */
+    @Override
+    public int hashCode()
     {
         throw new UnsupportedOperationException("Not yet implemented");
     }
