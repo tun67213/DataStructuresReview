@@ -47,6 +47,18 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     }
 
     /**
+     * @param initialCapacity the capacity to initialize this ArrayList with
+     * @code Initializes this ArrayList with the provided capacity
+     */
+    @SuppressWarnings("unchecked")
+    public ArrayList(int initialCapacity)
+    {
+        this.size = 0;
+        this.capacity = initialCapacity;
+        this.array = (E[]) new Object[this.capacity];
+    }
+
+    /**
      * @code Ensures that the array has enough space and if not, reallocates
      *       the values in this array into a new one
      */
