@@ -1739,7 +1739,22 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public List<E> subList(int fromIndex, int toIndex)
     {
-        if(from)
+        if(fromIndex < 0 && toIndex > this.size)
+        {
+            throw new IndexOutOfBoundsException("Indexes " + fromIndex + " and " + toIndex + " are out of bounds");
+        }
+        Node<E> current = head;
+        for(int i = 0; i < fromIndex; i++)
+        {
+            current = current.next;
+        }
+        LinkedList<E> list = new LinkedList<>();
+        for(int i = fromIndex; i < toIndex; i++)
+        {
+            list.add(current.data);
+            current = current.next;
+        }
+        return list;
     }
 
     /**
