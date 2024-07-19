@@ -613,7 +613,20 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public int indexOf(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(o == null)
+        {
+            throw new NullPointerException("You MUST provide a value to find the location of the first occurrence of in this Linked List");
+        }
+        Node<E> current = head;
+        for(int i = 0; i < this.size; i++)
+        {
+            if(current.data.equals(o))
+            {
+                return i;
+            }
+            current = current.next;
+        }
+        return -1;
     }
 
     /**
