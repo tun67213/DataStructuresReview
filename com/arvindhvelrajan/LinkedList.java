@@ -1452,7 +1452,45 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public boolean removeFirstOccurrence(Object o)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(o == null)
+        {
+            throw new NullPointerException("You MUST provide a value to find and remove the first occurrence of");
+        }
+        Node<E> removingNode = head;
+        while(removingNode != null && !(removingNode.data.equals(o)))
+        {
+            removingNode = removingNode.next;
+        }
+        if(removingNode == null)
+        {
+            return false;
+        }
+        else if(removingNode.previous == null && removingNode.next == null)
+        {
+            head = null;
+            tail = null;
+        }
+        else if(removingNode.previous == null)
+        {
+            head = head.next;
+            removingNode.next = null;
+            head.previous = null;
+        }
+        else if(removingNode.next == null)
+        {
+            tail = tail.previous;
+            removingNode.previous = null;
+            tail.next = null;
+        }
+        else
+        {
+            removingNode.previous.next = removingNode.next;
+            removingNode.next.previous = removingNode.previous;
+            removingNode.previous = null;
+            removingNode.next = null;
+        }
+        this.size--;
+        return true;
     }
 
     /**
