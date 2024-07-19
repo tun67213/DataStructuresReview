@@ -735,7 +735,143 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public ListIterator<E> listIterator()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return new ListIterator<E>()
+        {
+            private int currentIndex;
+            private Node<E> current;
+
+            {
+                currentIndex = 0;
+                current = head;
+            }
+
+            @Override
+            public boolean hasNext()
+            {
+                return currentIndex < size;
+            }
+
+            @Override
+            public E next()
+            {
+                if(!hasNext())
+                {
+                    throw new NoSuchElementException("List Iterator has reached the end of this Linked List");
+                }
+                E value = current.data;
+                current = current.next;
+                currentIndex++;
+                return value;
+            }
+
+            @Override
+            public boolean hasPrevious()
+            {
+                return currentIndex >= 0;
+            }
+
+            @Override
+            public E previous()
+            {
+                if(!hasPrevious())
+                {
+                    throw new NoSuchElementException("List Iterator has reached the beginning of this Linked LIst");
+                }
+                E value = current.data;
+                current = current.previous;
+                currentIndex--;
+                return value;
+            }
+
+            @Override
+            public int nextIndex()
+            {
+                return currentIndex;
+            }
+
+            @Override
+            public int previousIndex()
+            {
+                return currentIndex - 1;
+            }
+
+            @Override
+            public void remove()
+            {
+                Node<E> removingNode = current;
+                if(current.previous == null && current.next == null)
+                {
+                    currentIndex = -1;
+                    current = null;
+                    head = null;
+                    tail = null;
+                }
+                else if(current.previous == null)
+                {
+                    head = head.next;
+                    removingNode.next = null;
+                    head.previous = null;
+                    current = head;
+                }
+                else if(current.next == null)
+                {
+                    tail = tail.previous;
+                    removingNode.previous = null;
+                    tail.next = null;
+                    current = tail;
+                }
+                else
+                {
+                    current = current.previous;
+                    removingNode.previous.next = removingNode.next;
+                    removingNode.next.previous = removingNode.previous;
+                    removingNode.previous = null;
+                    removingNode.next = null;
+                }
+                size--;
+            }
+
+            @Override
+            public void set(E e)
+            {
+                if(e == null)
+                {
+                    throw new NullPointerException("You MUST provide a replacement value");
+                }
+                current.data = e;
+            }
+
+            @Override
+            public void add(E e)
+            {
+                if(e == null)
+                {
+                    throw new NullPointerException("You MUST provide a value to add to this Linked List");
+                }
+                Node<E> newNode = new Node<>(e);
+                if(head == null)
+                {
+                    head = newNode;
+                    tail = newNode;
+                    current = tail;
+                }
+                else if(current.next == null)
+                {
+                    tail.next = newNode;
+                    newNode.previous = tail;
+                    tail = tail.next;
+                    current = tail;
+                }
+                else
+                {
+                    newNode.next = current.next;
+                    newNode.previous = current;
+                    current.next.previous = newNode;
+                    current.next = newNode;
+                    current = current.next;
+                }
+            }
+        };
     }
 
     /**
@@ -746,7 +882,147 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public ListIterator<E> listIterator(int index)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(index < 0 || index >= this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        return new ListIterator<E>()
+        {
+            private int currentIndex;
+            private Node<E> current;
+
+            {
+                currentIndex = index;
+                current = head;
+            }
+
+            @Override
+            public boolean hasNext()
+            {
+                return currentIndex < size;
+            }
+
+            @Override
+            public E next()
+            {
+                if(!hasNext())
+                {
+                    throw new NoSuchElementException("List Iterator has reached the end of this Linked List");
+                }
+                E value = current.data;
+                current = current.next;
+                currentIndex++;
+                return value;
+            }
+
+            @Override
+            public boolean hasPrevious()
+            {
+                return currentIndex >= 0;
+            }
+
+            @Override
+            public E previous()
+            {
+                if(!hasPrevious())
+                {
+                    throw new NoSuchElementException("List Iterator has reached the beginning of this Linked LIst");
+                }
+                E value = current.data;
+                current = current.previous;
+                currentIndex--;
+                return value;
+            }
+
+            @Override
+            public int nextIndex()
+            {
+                return currentIndex;
+            }
+
+            @Override
+            public int previousIndex()
+            {
+                return currentIndex - 1;
+            }
+
+            @Override
+            public void remove()
+            {
+                Node<E> removingNode = current;
+                if(current.previous == null && current.next == null)
+                {
+                    currentIndex = -1;
+                    current = null;
+                    head = null;
+                    tail = null;
+                }
+                else if(current.previous == null)
+                {
+                    head = head.next;
+                    removingNode.next = null;
+                    head.previous = null;
+                    current = head;
+                }
+                else if(current.next == null)
+                {
+                    tail = tail.previous;
+                    removingNode.previous = null;
+                    tail.next = null;
+                    current = tail;
+                }
+                else
+                {
+                    current = current.previous;
+                    removingNode.previous.next = removingNode.next;
+                    removingNode.next.previous = removingNode.previous;
+                    removingNode.previous = null;
+                    removingNode.next = null;
+                }
+                size--;
+            }
+
+            @Override
+            public void set(E e)
+            {
+                if(e == null)
+                {
+                    throw new NullPointerException("You MUST provide a replacement value");
+                }
+                current.data = e;
+            }
+
+            @Override
+            public void add(E e)
+            {
+                if(e == null)
+                {
+                    throw new NullPointerException("You MUST provide a value to add to this Linked List");
+                }
+                Node<E> newNode = new Node<>(e);
+                if(head == null)
+                {
+                    head = newNode;
+                    tail = newNode;
+                    current = tail;
+                }
+                else if(current.next == null)
+                {
+                    tail.next = newNode;
+                    newNode.previous = tail;
+                    tail = tail.next;
+                    current = tail;
+                }
+                else
+                {
+                    newNode.next = current.next;
+                    newNode.previous = current;
+                    current.next.previous = newNode;
+                    current.next = newNode;
+                    current = current.next;
+                }
+            }
+        };
     }
 
     /**
