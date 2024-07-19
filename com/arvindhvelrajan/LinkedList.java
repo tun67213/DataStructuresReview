@@ -552,7 +552,16 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public E get(int index)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(index < 0 || index >= this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        Node<E> current = head;
+        for(int i = 0; i < index; i++)
+        {
+            current = current.next;
+        }
+        return current.data;
     }
 
     /**
@@ -561,7 +570,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E getFirst()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(head == null)
+        {
+            throw new NoSuchElementException("This Linked List is empty");
+        }
+        return head.data;
     }
 
     /**
@@ -570,7 +583,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E getLast()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(tail == null)
+        {
+            throw new NoSuchElementException("This Linked List is empty");
+        }
+        return tail.data;
     }
 
     /**
