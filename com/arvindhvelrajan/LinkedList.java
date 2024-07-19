@@ -1500,7 +1500,24 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E removeLast()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(tail == null)
+        {
+            throw new NoSuchElementException("This Linked List is empty");
+        }
+        Node<E> removingNode = tail;
+        if(tail.previous == null)
+        {
+            head = null;
+            tail = null;
+        }
+        else
+        {
+            tail = tail.previous;
+            removingNode.previous = null;
+            tail.next = null;
+        }
+        this.size--;
+        return removingNode.data;
     }
 
     /**
