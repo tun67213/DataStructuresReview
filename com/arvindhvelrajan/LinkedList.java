@@ -1115,7 +1115,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E peek()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(head == null)
+        {
+            throw new NullPointerException("This Linked List is empty");
+        }
+        return head.data;
     }
 
     /**
@@ -1123,7 +1127,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E peekFirst()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(head == null)
+        {
+            return null;
+        }
+        return head.data;
     }
 
     /**
@@ -1131,7 +1139,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E peekLast()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(tail == null)
+        {
+            return null;
+        }
+        return tail.data;
     }
 
     /**
