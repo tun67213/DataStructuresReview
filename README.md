@@ -5,9 +5,9 @@
     This Project is designed to demonstrate a few of the various data structures that exist in Java 
     through implementing them. Those include ArrayList and LinkedList. For the LinkedList 
     class, the implementation that will be followed is the DoublyLinkedList class as per 
-    what is followed in standard Java.
+    what is followed in Java SE 7.
 
-## Files
+## Files and Functionalities
 
 ### AbstractCollection.java, AbstractList.java, AbstractSequentialList.java
 
@@ -103,3 +103,63 @@ Those functions are as follows:
     Returns an array that is of the same size as this Collection that contains all the values in this Collection
 #### <T> T[] toArray(T[] a)
     Using a generic variable T, it creates an array that is of the same runtime as the variable T that is provided by modifying the array a such that it fits all the values in this Collection at the time it is called.
+
+
+### Queue.java
+
+This interface showcases the functions that are necessary based on documentation online.
+
+The following are the functions:
+#### boolean add(E e)
+    If no value is providedthen throws NullPointerException.
+    If a value is provided, adds the provided value to the queue.
+
+#### boolean offer(E e)
+    Offers the provided value to the beginning of this Queue
+
+#### E peek()
+    Retrieves and returns, but does not remove, the first value in this Queue, unless the Queue is empty
+
+#### E poll()
+    Retrieves, removes, and returns the first value, removing it from this Queue, unless the Queue is empty
+
+#### E element()
+    Similar to peek(), retrieves, but does not remove, the head of this Queue, unless the Queue is empty
+
+#### E remove()
+    Just like poll(), retrieves, removes, and returns the head of this Queue, unless the Queue is empty
+
+
+### Deque.java
+
+This interface showcases the functions that are necessary based on online documentation.
+
+The following are the functions:
+#### boolean add(E e)
+    Throws an exception if no value is provided. If no exception is thrown, adds the provided value to the deque chain. Returns true after successfully adding the provided value
+#### void addFirst(E e)
+    If no value is provided, throws a NullPointerException(). If no exception is thrown, adds the provided value to the beginning of the deque, just as the function name suggests.
+#### void addLast(E e)
+    If no value is provided, throws a NullPointerException(). If no exception is thrown, adds the provided value to the end of the deque, as the function name suggests.
+#### boolean contains(Object o)
+    If no Object is provided, throws a NullPointerException(). If no exception is throws, looks through this deque to check for the existence of this Object. If found, returns true immediately. If it has reached the end of the iteration, it means the value was not found, returning false.
+#### Iterator<E> descendingIterator()
+    Returns a descending iterator starting at the end of the Deque all the way to the beginning that is of type E.
+#### E element()
+    Returns the head (first) value in this Deque. If no value is there, throws NoSuchElementException(). If not, simply returns the value there.
+#### E getFirst()
+    Retrieves, but does not remove, the first value in this Deque.
+#### E getLast()
+    Retrieves, but does not remove, the last value in this Deque.
+#### Iterator<E> iterator()
+    Returns an iterator of the values in this Deque from start to finish.
+#### boolean offer(E e)
+    If no element is provided, throws a NullPointerException().
+    If a value IS provided, adds the provided value to the end of this Deque and returns true.
+#### boolean offerFirst(E e)
+    If no element is provided, throws a NullPointerException().
+    If a value IS provided, adds the provided value to the beginning of this Deque and returns true.
+#### boolean offerLast(E e)
+    If no element is provided, throws a NullPointerException().
+    If a value IS provided, adds the provided value to the end of this Deque and returns true.
+
