@@ -82,7 +82,7 @@ Those functions are as follows:
 #### boolean isEmpty()
     Returns true if this Collection is empty, false otherwise
 #### Iterator<E> iterator()
-    Returns a Iterator of type E that runs through all the values in this Collection
+    Returns an Iterator of type E that runs through all the values in this Collection
 #### boolean remove(Object o)
     If the user fails to provide an Object, throws an exception.
     If the user provides an Object but is not found in this Collection, returns false.
@@ -113,19 +113,14 @@ The following are the functions:
 #### boolean add(E e)
     If no value is providedthen throws NullPointerException.
     If a value is provided, adds the provided value to the queue.
-
 #### boolean offer(E e)
     Offers the provided value to the beginning of this Queue
-
 #### E peek()
     Retrieves and returns, but does not remove, the first value in this Queue, unless the Queue is empty
-
 #### E poll()
     Retrieves, removes, and returns the first value, removing it from this Queue, unless the Queue is empty
-
 #### E element()
     Similar to peek(), retrieves, but does not remove, the head of this Queue, unless the Queue is empty
-
 #### E remove()
     Just like poll(), retrieves, removes, and returns the head of this Queue, unless the Queue is empty
 
@@ -136,7 +131,7 @@ This interface showcases the functions that are necessary based on online docume
 
 The following are the functions:
 #### boolean add(E e)
-    Throws an exception if no value is provided. If no exception is thrown, adds the provided value to the deque chain. Returns true after successfully adding the provided value
+    Throws an exception if no value is provided. If no exception is thrown, adds the provided value to the deque chain. Returns true after successfully adding the provided value.
 #### void addFirst(E e)
     If no value is provided, throws a NullPointerException(). If no exception is thrown, adds the provided value to the beginning of the deque, just as the function name suggests.
 #### void addLast(E e)
@@ -162,4 +157,173 @@ The following are the functions:
 #### boolean offerLast(E e)
     If no element is provided, throws a NullPointerException().
     If a value IS provided, adds the provided value to the end of this Deque and returns true.
+#### E peek()
+    If the Deque is empty, throws an exception.
+    If not, return the first value in this Deque.
+#### E peekFirst()
+    If the Deque is empty, return null.
+    If not, return the first value in this Deque.
+#### E peekLast()
+    If the Deque is empty, return null.
+    If not, return the last value in this Deque.
+#### E poll()
+    If the Deque is empty, throws an exception.
+    If not, removes and return the first value in this Deque.
+#### E pollFirst()
+    If the Deque is empty, return null.
+    If not, removes and return the first value in this Deque.
+#### E pollLast()
+    If the Deque is empty, return null.
+    If not, removes and return the last value in this Deque.
+#### E pop()
+    If this stack is empty, throws an exception.
+    If not, removes the first value from the stack representing this Deque and return it.
+#### void push(E e)
+    If no value is provided, throws an exception.
+    If a value is provided, pushes it to the top of the stack (i.e., as the first element in this Deque).
+#### E remove()
+    If this stack is empty, throws an exception.
+    If not, removes the first value from this Deque and return it.
+#### boolean remove(Object o)
+    If no value is provided, throws an exception.
+    If a value is provided but is not found in this Deque, then return false.
+    If it IS found and removed, then return true.
+#### E removeFirst()
+    Throws an exception if no value is existent in this Deque.
+    Removes and return the first value returned by this Deque.
+#### boolean removeFirstOccurrence(Object o)
+    If no value is provided, throws an exception.
+    If a value is provided but is not found in this Deque, then return false.
+    If the first occurrence of the provided value IS found and removed, then return true.
+    This function has the same implementation as remove()
+#### E removeLast()
+    Throws an exception if no value is existent in this Deque.
+    Removes and return the last value returned by this Deque.
+#### boolean removeLastOccurrence(Object o)
+    If no value is provided, throws an exception.
+    If a value is provided but is not found in this Deque, then return false.
+    If the last occurrence of the provided value IS found and removed, then return true.
+#### int size()
+    Returns the number of elements currently in this Deque
 
+
+### ListIterator.java
+
+This interface creates a new Data Structure called the List Iterator to be used by the List interface that is an extension of the already existent Iterator interface.
+
+It has the following function declarations:
+#### void add(E e)
+    If no value is provided, throws a NullPointerException.
+    Inserts the specified element into this List.
+#### boolean hasNext()
+    Returns true if this List Iterator has more elements to present when traversing in the forward direction
+#### boolean hasPrevious()
+    Returns true if this List Iterator has more elements to present when traversing in the backwards direction
+#### E next()
+    Returns the current element in the list, and moves the pointer to the next element
+#### int nextIndex()
+    Returns the location at which the element returned by the subsequent call to next() is positioned at
+#### E previous()
+    Returns the current element in the list, and moves the pointer to the previous element
+#### int previousIndex()
+    Returns the location at which the element returned by the subsequent call to previous() is positioned at
+#### void remove()
+    Removes the element pointed to by this ListIterator, moving it to the previous pointer, or next pointer if the value to be removed is the first value in this ListIterator
+#### void set(E e)
+    Throws a NullPointerException if no value is provide.
+    If a value IS provided, changes the value pointed to by the current index to the value mentioned in this function.
+
+
+### List.java
+
+This interface is the basis for my ArrayList and LinkedList classes.
+
+They feature the following functions:
+#### boolean add(E e)
+    If no value is provided, the function throws a NullPointerException(), mentioning that a value MUST be provided.
+    If a value IS provided, accommodates that value to the end of this List.
+#### void add(int index, E element)
+    Similar to above, if no value is provided, the function throws a NullPointerException.
+    If an index is provided, but is out of bounds, throws an exception for that too.
+    If both are ok, then accommodates the specified element at the specified index.
+#### boolean addAll(Collection<? extends E> c)
+    If no Collection is provided, the function throws a NullPointerException(), mentioning that a Collection of values MUST be provided.
+    If a Collection IS provided, but has NO values in them, the function returns false, meaning no changes were made to this List.
+    If all is provided, then the function accommodates and adds the value to the end of this List using the Collection's Iterator and returns true.
+#### boolean addAll(int index, Collection<? extends E> c)
+    If no Collection is provided, the function throws a NullPointerException(), mentioning that a Collection of values MUST be provided.
+    If an index and a Collection are provided, but the index is out of bounds, throws an IndexOutOfBoundsException(), mentioning that the provided index is out of bounds.
+    If both are ok, using the Collection's Iterator, inserts the values of the specified Collection starting at the specified index.
+#### void clear()
+    Clears the List, resetting it to defaults so that no values are existent in it.
+#### boolean contains(Object o)
+    Throws a NullPointerException() if no value is provided.
+    If a value IS provided, it searches the List for its existence.
+    If found, returns true immediately. Else, it iterates through the whole list, and if still not found, and then returns false.
+#### boolean containsAll(Collection<?> c)
+    Throws a NullPointerException() if no collection is provided.
+    If a collection IS provided:
+        If either of these conditions happen, the function will return true:
+            The provided Collection contains NO values
+            OR
+            The values in the provided Collection are found in this List
+#### boolean equals(Object o)
+    Throws a NullPointerException() if no Object is provided.
+    If the provided Object is the same as the Object created by the provided class, then returns true. Or else, returns false.
+#### E get(int index)
+    Throws an IndexOutOfBoundsException() if index is provided, but is out of bounds.
+    Returns the value located at the specified index.
+#### int hashCode()
+    Returns the hash code value for this List.
+#### int indexOf(Object o)
+    Throws a NullPointerException if no Object is provided.
+    If no exception is thrown, returns the location of the first occurrence of the specified item.
+#### boolean isEmpty()
+    Returns true if this List is empty, false otherwise.
+#### Iterator<E> Iterator()
+    Returns an iterator over the elements in this List in proper sequence.
+#### int lastIndexOf(Object o)
+    Throws a NullPointerException if no Object is provided.
+    If no exception is thrown, returns the location of the last occurrence of the specified item.
+#### ListIterator<E> listIterator()
+    Returns a List Iterator over the elements in this List.
+#### ListIterator<E> listIterator(int index)
+    Throws an IndexOutOfBoundsException() if index is provided, but is out of bounds.
+    If index is in bound, returns a List Iterator over the elements in this List, starting at the specified index.
+#### E remove(int index)
+    Throws an IndexOutOfBoundsException() if index is provided, but is out of bounds.
+    If index is in bound...
+        First the program saves the value at the specified index.
+        Then, it removes the value from this List by shifting everything after it one step forward.
+#### boolean remove(Object o)
+    Throws a NullPointerException() if no value is provided.
+    Searches for the first occurrence of the provided Object.
+    If the Object is not found, returns false.
+    If the Object IS found, then removes the Object from this List and returns true.
+#### boolean removeAll(Collection<?> c)
+    Throws a NullPointerException() if no Collection is provided.
+    If the Collection is empty, return false.
+    If any values in the Collection are found in this List, removes it from this List.
+    In the end, it returns true if this list has been modified, false otherwise.
+#### boolean retainAll(Collection<?> c)
+    Throws a NullPointerException() if no Collection is provided.
+    Unlike removeAll(), if the Collection is empty, clears all values in this List and resets it to defaults, returning true.
+    Otherwise, only keeps values that are contained in the provided Collection.
+    Finally, it returns true if at least one value was removed, modifying the List.
+#### E set(int index, E element)
+    Throws a NullPointerException() if no replacement value is provided.
+    Throws an IndexOutOfBoundsException() if index is provided, but is out of bounds.
+    If no exceptions are thrown, navigates the the specified index and replaces the existing value with the provided value, returning the old value back to the user.
+#### int size()
+    Returns the current size of this List.
+#### List<E> subList(int fromIndex, int toIndex)
+    Throws an IndexOutOfBoundsException() if both or either of the provided indexes is out of bounds.
+    Throws an IllegalArgumentException() if fromIndex is greater than toIndex.
+    If no Exceptions are thrown, returns a List containing only the values within the specified index.
+#### Object[] toArray()
+    Returns an array containing all the elements in this List in proper sequence
+#### <T> T[] toArray(T[] a)
+    Throws a NullPointerException if no array a is provided.
+    Returns an array containing all the elements in this list in proper sequence where the runtime of the returned array is the same as that of the provided array.
+#### String toString()
+    Returns a String representation of this List so that it is readable to the user on the command line.
