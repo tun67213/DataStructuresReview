@@ -163,7 +163,37 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public boolean addAll(Collection<? extends E> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a collection of values to add to this Linked List");
+        }
+        if(c.isEmpty())
+        {
+            return false;
+        }
+        Iterator<? extends E> iterator = c.iterator();
+        while(iterator.hasNext())
+        {
+            E value = iterator.next();
+            if(value == null)
+            {
+                throw new NullPointerException("No null values permitted in this Linked List");
+            }
+            Node<E> newNode = new Node<>(value);
+            if(tail == null)
+            {
+                head = newNode;
+                tail = newNode;
+            }
+            else
+            {
+                tail.next = newNode;
+                newNode.previous = tail;
+                tail = tail.next;
+            }
+            this.size++;
+        }
+        return true;
     }
 
     /**
@@ -178,7 +208,87 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public boolean addAll(int index, Collection<? extends E> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a collection of values to add to this Linked List");
+        }
+        if(index < 0 || index > this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        if(c.isEmpty())
+        {
+            return false;
+        }
+        Iterator<? extends E> iterator = c.iterator();
+        Node<E> newNode = null;
+        boolean addedOne = false;
+        Node<E> current = head;
+        if(index == 0)
+        {
+            while(iterator.hasNext())
+            {
+                E value = iterator.next();
+                if(value == null)
+                {
+                    throw new NullPointerException("No null values permitted in this Linked List");
+                }
+                newNode = new Node<>(value);
+                if(addedOne)
+                {
+                    newNode.next = current.next;
+                    newNode.previous = current;
+                    current.next.previous = newNode;
+                    current.next = newNode;
+                    current = current.next;
+                }
+                else
+                {
+                    head.previous = newNode;
+                    newNode.next = head;
+                    head = head.previous;
+                    addedOne = true;
+                }
+                this.size++;
+            }
+        }
+        else if(index == this.size)
+        {
+            while(iterator.hasNext())
+            {
+                newNode = new Node<>(iterator.next());
+                if(tail == null)
+                {
+                    head = newNode;
+                    tail = newNode;
+                }
+                else
+                {
+                    tail.next = newNode;
+                    newNode.previous = tail;
+                    tail = tail.next;
+                }
+                this.size++;
+            }
+        }
+        else
+        {
+            for(int i = 0; i < index - 1; i++)
+            {
+                current = current.next;
+            }
+            while(iterator.hasNext())
+            {
+                newNode = new Node<>(iterator.next());
+                newNode.next = current.next;
+                newNode.previous = current;
+                current.next.previous = newNode;
+                current.next = newNode;
+                current = current.next;
+                this.size++;
+            }
+        }
+        return true;
     }
 
     /**
