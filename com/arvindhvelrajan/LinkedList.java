@@ -1579,7 +1579,55 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public boolean removeAll(Collection<?> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a collection of values to find and remove from this List");
+        }
+        if(c.isEmpty())
+        {
+            return false;
+        }
+        boolean listModified = false;
+        Node<E> current = head;
+        Node<E> removingNode = null;
+        while(current != null)
+        {
+            if(c.contains(current.data))
+            {
+                listModified = true;
+                removingNode = current;
+                if(removingNode.previous == null && removingNode.next == null)
+                {
+                    head = null;
+                    tail = null;
+                    current = null;
+                }
+                else if(removingNode.previous == null)
+                {
+                    head = head.next;
+                    removingNode.next = null;
+                    head.previous = null;
+                    current = head;
+                }
+                else if(removingNode.next == null)
+                {
+                    tail = tail.previous;
+                    removingNode.previous = null;
+                    tail.next = null;
+                    current = tail;
+                }
+                else
+                {
+                    current = current.previous;
+                    removingNode.previous.next = removingNode.next;
+                    removingNode.next.previous = removingNode.previous;
+                    removingNode.previous = null;
+                    removingNode.next = null;
+                }
+                this.size--;
+            }
+        }
+        return listModified;
     }
 
     /**
@@ -1591,7 +1639,58 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public boolean retainAll(Collection<?> c)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(c == null)
+        {
+            throw new NullPointerException("You MUST provide a collection of values to find and remove from this List");
+        }
+        if(c.isEmpty())
+        {
+            this.size = 0;
+            head = null;
+            tail = null;
+            return true;
+        }
+        boolean listModified = false;
+        Node<E> current = head;
+        Node<E> removingNode = null;
+        while(current != null)
+        {
+            if(c.contains(current.data))
+            {
+                listModified = true;
+                removingNode = current;
+                if(removingNode.previous == null && removingNode.next == null)
+                {
+                    head = null;
+                    tail = null;
+                    current = null;
+                }
+                else if(removingNode.previous == null)
+                {
+                    head = head.next;
+                    removingNode.next = null;
+                    head.previous = null;
+                    current = head;
+                }
+                else if(removingNode.next == null)
+                {
+                    tail = tail.previous;
+                    removingNode.previous = null;
+                    tail.next = null;
+                    current = tail;
+                }
+                else
+                {
+                    current = current.previous;
+                    removingNode.previous.next = removingNode.next;
+                    removingNode.next.previous = removingNode.previous;
+                    removingNode.previous = null;
+                    removingNode.next = null;
+                }
+                this.size--;
+            }
+        }
+        return listModified;
     }
 
     /**
@@ -1605,7 +1704,22 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
      */
     public E set(int index, E element)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(element == null)
+        {
+            throw new NullPointerException("You MUST provide a replacement value");
+        }
+        if(index < 0 || index >= this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+        }
+        Node<E> current = head;
+        for(int i = 0; i < index; i++)
+        {
+            current = current.next;
+        }
+        E value = current.data;
+        current.data = element;
+        return value;
     }
 
     /**
@@ -1614,18 +1728,18 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public int size()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return this.size;
     }
 
     /**
      * @param fromIndex the starting location from which to create this subList
      * @param toIndex   the ending location from which to create this subList
      * @throws IndexOutOfBoundsException if either is out of bounds
-     * @throws IllegalArgumentException  if fromIndex is greater than 19
+     * @throws IllegalArgumentException  if fromIndex is greater than toIndex
      */
     public List<E> subList(int fromIndex, int toIndex)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(from)
     }
 
     /**
