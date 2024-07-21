@@ -404,3 +404,115 @@ This class is the implementation for the ArrayList data structure using generics
     If found, immediately returns true.
     Until then, iterates through the rest of this list.
     If iteration finishes, then the provided Object was not found, so the program returns false.
+#### public boolean containsAll(Collection<?> c)
+    If no Collection is provided, throws a NullPointerException().
+    If a Collection IS provided, but is empty, returns true.
+    If one of the values in the Collection is not found in this ArrayList object, returns false immediately.
+    If it iterates through the whole thing with no problems, returns true.
+#### public boolean equals(Object o)
+    If no Object is provided, throws a NullPointerException().
+    If an Object IS provided, check if the Object provided is similar to or maybe even the same as the current ArrayList.
+    If so, return true. Or else, return false.
+#### public E get(int index)
+    If an index is provided, but is out of bounds (i.e. It is less than 0 or greater than or equal to this ArrayList's
+        current size), then the function throws an IndexOutOfBoundsException().
+    If all is fine, then returns the value at the specified index in this array.
+#### public int hashCode()
+    Simply returns a hash code value for this ArrayList
+#### public int indexOf(Object o)
+    If no Object is provided, it throws a NullPointerException().
+    If an Object IS provided, then it finds the location of the FIRST occurrence of that Object.
+    If found, returns that location. Else, it returns -1.
+#### public boolean isEmpty()
+    Returns true if this ArrayList is empty, false otherwise
+#### public Iterator<E> iterator()
+    Returns an iterator that runs through the values in this ArrayList using the following variables and functions:
+        Variables:
+            private int currentIndex
+                Keeps track of the index it will iterate next
+        Functions:
+            public boolean hasNext()
+                This function checks if there is a value that can still be returned by a subsequent call to next()
+            public E next()
+                If hasNext() returns false, throws an exception stating that the Iterator has reached the end of this 
+                ArrayList.
+                If not, then it saves the value at the specified index, increments the index, then returns that saved
+                value.
+            public void remove()
+                If the current index is not out of bounds, then it will remove the value at the specified index from 
+                this ArrayList.
+#### public int lastIndexOf(Object o)
+    If no value is provided, it will throw a NullPointerException().
+    If an Object IS provided, then it finds the location of the LAST occurrence of that Object.
+    If found, returns that location. Else, it returns -1.
+#### public ListIterator<E> listIterator()
+    Variables:
+        private int currentIndex
+            Keeps track of the index it will iterate next
+    Functions:
+        public boolean hasNext()
+            This function checks if the List Iterator has more values to present with reference to the currentIndex 
+            variable when traversing in the forwards direction.
+        public E next()
+            This function calls hasNext(), and if hasNext() returns false, then it throws NoSuchElementException().
+            If hasNext() is true, then it saves the value at the provided index, moves the index pointer forward, and 
+            then returns the saved value.
+        public boolean hasPrevious()
+            This function checks if the List Iterator has more values to present with reference to the currentIndex
+            variable when traversing in the backwards direction.
+        public E previous()
+            This function calls hasPrevious(), and if hasPrevious() returns false, then it throws a 
+            NoSuchElementException().
+            If hasPrevious() is true, then it saves the value at the provided index, moves the index pointer backwards,
+            and then returns the saved value.
+        public int nextIndex()
+            Returns the location at which to retrieve the value on the subsequent call to next().
+        public int previousIndex()
+            Returns the location at which to retrieve the value on the subsequent call to previous().
+        public void set(E e)
+            Throws a NullPointerException() if no value is provided.
+            If a value IS provided, then replaces the old value at the provided index with this new one.
+        public void add(E e)
+            Throws a NullPointerException() if no value is provided.
+            If a value IS provided, adds the provided value into this ArrayList at the specified index by shifting all
+            values one space to the right and then inserting it into the specified array. Then, it increments the size
+            of this ArrayList.
+        public void remove()
+            Removes the value at the current index in this array and adjusts the current index accordingly.
+#### public ListIterator<E> listIterator(int index)
+    Variables:
+        int index:
+            This is the parameter to be provided by the user as to what location to start the iteration from.
+            If the provided index is out of bounds, throws an IndexOutOfBoundsException().
+        private int currentIndex
+            Keeps track of the index it will iterate next
+    Functions:
+        public boolean hasNext()
+            This function checks if the List Iterator has more values to present with reference to the currentIndex 
+            variable when traversing in the forwards direction.
+        public E next()
+            This function calls hasNext(), and if hasNext() returns false, then it throws NoSuchElementException().
+            If hasNext() is true, then it saves the value at the provided index, moves the index pointer forward, and 
+            then returns the saved value.
+        public boolean hasPrevious()
+            This function checks if the List Iterator has more values to present with reference to the currentIndex
+            variable when traversing in the backwards direction.
+        public E previous()
+            This function calls hasPrevious(), and if hasPrevious() returns false, then it throws a 
+            NoSuchElementException().
+            If hasPrevious() is true, then it saves the value at the provided index, moves the index pointer backwards,
+            and then returns the saved value.
+        public int nextIndex()
+            Returns the location at which to retrieve the value on the subsequent call to next().
+        public int previousIndex()
+            Returns the location at which to retrieve the value on the subsequent call to previous().
+        public void set(E e)
+            Throws a NullPointerException() if no value is provided.
+            If a value IS provided, then replaces the old value at the provided index with this new one.
+        public void add(E e)
+            Throws a NullPointerException() if no value is provided.
+            If a value IS provided, adds the provided value into this ArrayList at the specified index by shifting all
+            values one space to the right and then inserting it into the specified array. Then, it increments the size
+            of this ArrayList.
+        public void remove()
+            Removes the value at the current index in this array and adjusts the current index accordingly.
