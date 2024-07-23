@@ -862,6 +862,10 @@ public class ArrayList<E> implements List<E>, RandomAccess, Cloneable, Serializa
     @Override
     public <T> T[] toArray(T[] a)
     {
+        if(a == null)
+        {
+            throw new NullPointerException("You MUST provide a value array parameter");
+        }
         if(a.length < this.size)
         {
             a = (T[]) java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), this.size);
