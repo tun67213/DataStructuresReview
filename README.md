@@ -330,7 +330,6 @@ They feature the following functions:
 
 
 ### ArrayList.java
-
 This class is the implementation for the ArrayList data structure using generics, i.e., it acccommodates any data type.
 
 #### Private Variables
@@ -359,40 +358,27 @@ This class is the implementation for the ArrayList data structure using generics
 #### Functions
 
 ##### private void ensureCapacity()
-    Checks if the number of elements currently in this array fill up the array, and if so, creates a new array, 
-        allocating half the amount more space in the array
+    Checks if the number of elements currently in this array fill up the array, and if so, creates a new array, allocating half the amount more space in the array
 ##### public boolean add(E e)
-    If no element e is provided, throws a NullPointerException() 
-        with an error message stating that an element is required.
-    If an element is provided, uses the ensureCapacity() function above to make sure that enough space is there 
-        in the array, and then adds it to the end of a list of values already in this array, if any.
+    If no element e is provided, throws a NullPointerException() with an error message stating that an element is required.
+    If an element is provided, uses the ensureCapacity() function above to make sure that enough space is there in the array, and then adds it to the end of a list of values already in this array, if any.
     At the end, it increments the size of this ArrayList by 1.
 ##### public void add(int index, E element)
-    If no element is provided, throws a NullPointerException() 
-        with an error message stating that an element is required.
-    If an element is provided, but index is out of bounds, throws an IndexOutOfBoundsException() 
-        with an error message stating that the provided index was out of bounds, including the index in the error message.
-    If both were provided and had no problems, ensuring that there is enough space, 
-        gives space for the element to go into the specified index and places it there.
+    If no element is provided, throws a NullPointerException() with an error message stating that an element is required.
+    If an element is provided, but index is out of bounds, throws an IndexOutOfBoundsException() with an error message stating that the provided index was out of bounds, including the index in the error message.
+    If both were provided and had no problems, ensuring that there is enough space, gives space for the element to go into the specified index and places it there.
     At the end, it increments the size of this ArrayList by 1.
 ##### public boolean addAll(Collection<? extends E> c)
-    If no Collection is provided, throws a NullPointerException() 
-        with an error message stating that a Collection is required.
+    If no Collection is provided, throws a NullPointerException() with an error message stating that a Collection is required.
     If a Collection IS provided, but there are no values in the Collection, returns false immediately.
-    If the Collection contains values, then for EACH element added, 
-        uses the private ensureCapacity() function above to make sure there is enough space for the element to go in.
+    If the Collection contains values, then for EACH element added, uses the private ensureCapacity() function above to make sure there is enough space for the element to go in.
     For each value added, increment the size by 1.
     Finally, since all is complete, return true.
 #### public boolean addAll(int index, Collection<? extends E> c)
-    If no Collection is provided, throws a NullPointerException() 
-        with an error message stating that a Collection is required.
-    If an index IS provided, but is out of bounds, throws an IndexOutOfBoundsException() 
-        with an error message stating that the provided index is out of bounds, INCLUDING the provided index.
-    If all is valid, then, as a first step, 
-        converts the provided Collection into an array using the toArray() method in c.
-    Afterwards, the program navigates to the END of the array representing this ArrayList, and, 
-        with each call to ensureCapacity(), moves the values one position to the right, ensuring a secure spot for
-        the value to be added in this ArrayList.
+    If no Collection is provided, throws a NullPointerException() with an error message stating that a Collection is required.
+    If an index IS provided, but is out of bounds, throws an IndexOutOfBoundsException() with an error message stating that the provided index is out of bounds, INCLUDING the provided index.
+    If all is valid, then, as a first step, converts the provided Collection into an array using the toArray() method in c.
+    Afterwards, the program navigates to the END of the array representing this ArrayList, and, with each call to ensureCapacity(), moves the values one position to the right, ensuring a secure spot for the value to be added in this ArrayList.
 #### public void clear()
     Simply empties this ArrayList, resetting it to be similar to when the user calls the default constructor 
         (i.e. List<E> list = new ArrayList<E>();)
@@ -414,8 +400,7 @@ This class is the implementation for the ArrayList data structure using generics
     If an Object IS provided, check if the Object provided is similar to or maybe even the same as the current ArrayList.
     If so, return true. Or else, return false.
 #### public E get(int index)
-    If an index is provided, but is out of bounds (i.e. It is less than 0 or greater than or equal to this ArrayList's
-        current size), then the function throws an IndexOutOfBoundsException().
+    If an index is provided, but is out of bounds (i.e. It is less than 0 or greater than or equal to this ArrayList's current size), then the function throws an IndexOutOfBoundsException().
     If all is fine, then returns the value at the specified index in this array.
 #### public int hashCode()
     Simply returns a hash code value for this ArrayList
@@ -434,13 +419,10 @@ This class is the implementation for the ArrayList data structure using generics
             public boolean hasNext()
                 This function checks if there is a value that can still be returned by a subsequent call to next()
             public E next()
-                If hasNext() returns false, throws an exception stating that the Iterator has reached the end of this 
-                ArrayList.
-                If not, then it saves the value at the specified index, increments the index, then returns that saved
-                value.
+                If hasNext() returns false, throws an exception stating that the Iterator has reached the end of this ArrayList.
+                If not, then it saves the value at the specified index, increments the index, then returns that saved value.
             public void remove()
-                If the current index is not out of bounds, then it will remove the value at the specified index from 
-                this ArrayList.
+                If the current index is not out of bounds, then it will remove the value at the specified index from this ArrayList.
 #### public int lastIndexOf(Object o)
     If no value is provided, it will throw a NullPointerException().
     If an Object IS provided, then it finds the location of the LAST occurrence of that Object.
@@ -451,20 +433,15 @@ This class is the implementation for the ArrayList data structure using generics
             Keeps track of the index it will iterate next
     Functions:
         public boolean hasNext()
-            This function checks if the List Iterator has more values to present with reference to the currentIndex 
-            variable when traversing in the forwards direction.
+            This function checks if the List Iterator has more values to present with reference to the currentIndex variable when traversing in the forwards direction.
         public E next()
             This function calls hasNext(), and if hasNext() returns false, then it throws NoSuchElementException().
-            If hasNext() is true, then it saves the value at the provided index, moves the index pointer forward, and 
-            then returns the saved value.
+            If hasNext() is true, then it saves the value at the provided index, moves the index pointer forward, and then returns the saved value.
         public boolean hasPrevious()
-            This function checks if the List Iterator has more values to present with reference to the currentIndex
-            variable when traversing in the backwards direction.
+            This function checks if the List Iterator has more values to present with reference to the currentIndex variable when traversing in the backwards direction.
         public E previous()
-            This function calls hasPrevious(), and if hasPrevious() returns false, then it throws a 
-            NoSuchElementException().
-            If hasPrevious() is true, then it saves the value at the provided index, moves the index pointer backwards,
-            and then returns the saved value.
+            This function calls hasPrevious(), and if hasPrevious() returns false, then it throws a NoSuchElementException().
+            If hasPrevious() is true, then it saves the value at the provided index, moves the index pointer backwards, and then returns the saved value.
         public int nextIndex()
             Returns the location at which to retrieve the value on the subsequent call to next().
         public int previousIndex()
@@ -474,9 +451,7 @@ This class is the implementation for the ArrayList data structure using generics
             If a value IS provided, then replaces the old value at the provided index with this new one.
         public void add(E e)
             Throws a NullPointerException() if no value is provided.
-            If a value IS provided, adds the provided value into this ArrayList at the specified index by shifting all
-            values one space to the right and then inserting it into the specified array. Then, it increments the size
-            of this ArrayList.
+            If a value IS provided, adds the provided value into this ArrayList at the specified index by shifting all values one space to the right and then inserting it into the specified array. Then, it increments the size of this ArrayList.
         public void remove()
             Removes the value at the current index in this array and adjusts the current index accordingly.
 #### public ListIterator<E> listIterator(int index)
@@ -486,22 +461,19 @@ This class is the implementation for the ArrayList data structure using generics
             If the provided index is out of bounds, throws an IndexOutOfBoundsException().
         private int currentIndex
             Keeps track of the index it will iterate next
+    Throws:
+        IndexOutOfBoundsException() if the provided index is not in bound.
     Functions:
         public boolean hasNext()
-            This function checks if the List Iterator has more values to present with reference to the currentIndex 
-            variable when traversing in the forwards direction.
+            This function checks if the List Iterator has more values to present with reference to the currentIndex variable when traversing in the forwards direction.
         public E next()
             This function calls hasNext(), and if hasNext() returns false, then it throws NoSuchElementException().
-            If hasNext() is true, then it saves the value at the provided index, moves the index pointer forward, and 
-            then returns the saved value.
+            If hasNext() is true, then it saves the value at the provided index, moves the index pointer forward, and then returns the saved value.
         public boolean hasPrevious()
-            This function checks if the List Iterator has more values to present with reference to the currentIndex
-            variable when traversing in the backwards direction.
+            This function checks if the List Iterator has more values to present with reference to the currentIndex variable when traversing in the backwards direction.
         public E previous()
-            This function calls hasPrevious(), and if hasPrevious() returns false, then it throws a 
-            NoSuchElementException().
-            If hasPrevious() is true, then it saves the value at the provided index, moves the index pointer backwards,
-            and then returns the saved value.
+            This function calls hasPrevious(), and if hasPrevious() returns false, then it throws a NoSuchElementException().
+            If hasPrevious() is true, then it saves the value at the provided index, moves the index pointer backwards, and then returns the saved value.
         public int nextIndex()
             Returns the location at which to retrieve the value on the subsequent call to next().
         public int previousIndex()
@@ -511,8 +483,14 @@ This class is the implementation for the ArrayList data structure using generics
             If a value IS provided, then replaces the old value at the provided index with this new one.
         public void add(E e)
             Throws a NullPointerException() if no value is provided.
-            If a value IS provided, adds the provided value into this ArrayList at the specified index by shifting all
-            values one space to the right and then inserting it into the specified array. Then, it increments the size
-            of this ArrayList.
+            If a value IS provided, adds the provided value into this ArrayList at the specified index by shifting all values one space to the right and then inserting it into the specified array. Then, it increments the size of this ArrayList.
         public void remove()
             Removes the value at the current index in this array and adjusts the current index accordingly.
+#### public E remove(int index)
+    Variables:
+        int index:
+            This indicates the location at which to remove the value from this ArrayList.
+    Throws:
+        IndexOutOfBoundsException() if the provided index is out of bounds.
+    Functionality:
+        This function removes the value at the provided index by shifting the values that follow one index forward,
