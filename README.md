@@ -330,7 +330,7 @@ They feature the following functions:
 
 
 ### ArrayList.java
-This class is the implementation for the ArrayList data structure using generics, i.e., it acccommodates any data type.
+This class is the implementation for the ArrayList data structure using generics, i.e., it accommodates any data type.
 
 #### Private Variables
 
@@ -494,3 +494,89 @@ This class is the implementation for the ArrayList data structure using generics
         IndexOutOfBoundsException() if the provided index is out of bounds.
     Functionality:
         This function removes the value at the provided index by shifting the values that follow one index forward,
+#### public boolean remove(Object o)
+    Variables:
+        Object o:
+            This is the object to find and remove the first occurrence of.
+    Throws:
+        NullPointerException() if no Object is provided.
+    Functionality:
+        If a value IS provided, it searches for the first occurrence of it. 
+            If the value is NOT found, then it returns false, indicating that no changes were made to this ArrayList.
+            If the value IS found, then it shifts all the elements after that location one space to the left, overriding that value to be removed, which in turn gets removed, returning true.
+#### public boolean removeAll(Collection<?> c)
+    Variables:
+        Collection<?> c:
+            The Collection of values of unknown type to be removed if found in this ArrayList.
+    Throws:
+        NullPointerException() if no Collection of values is provided
+    Functionality:
+        If a Collection of values is not provided, then the function throws a NullPointerException().
+        If a Collection IS provided, but has no values in it, the function returns false.
+        If a value from this Collection has been found, the value will be removed from the array representing this ArrayList
+        If the ArrayList is changed in any way, such that a value in the provided Collection has been found in this ArrayList, then the function returns true. Otherwise, the function returns false.
+#### public boolean retainAll(Collection<?> c)
+    Variables:
+        Collection<?> c:
+            The Collection of values of unknown type to be kept if found in this ArrayList.
+    Throws:
+        NullPointerException() if no Collection of values is provided
+    Functionality:
+        If a Collection of values is not provided, then the function throws a NullPointerException().
+        If a Collection IS provided, but has no values in it, the function clears this ArrayList by resetting it to default and returns true.
+        If a value in the array representing this ArrayList is NOT found this Collection, it is removed from the array, by which the user will not see it in when printing this ArrayList.
+#### public E set(int index, E element)
+    Variables:
+        int index:
+            The location at which to replace the existing value
+        E element:
+            The value to replace the existing value with
+    Throws:
+        NullPointerException() if no replacement value is provided
+        IndexOutOfBoundsException() if an index is provided, but is less than 0 or greater than or equal to the current size of this ArrayList
+    Functionality:
+        If no replacement value is provided, the function throws a NullPointerException().
+        If an index is provided, but is out of bounds, the function throws an IndexOutOfBoundsException().
+        If both are valid, then the function accesses and saves the value at the specified index in a separate variable.
+        Then, it replaces the value at the specified index with the new provided value.
+#### public int size()
+    Functionality:
+        There are no exceptions thrown or needed to be thrown for this one.
+        It simply returns the number of values currently in this ArrayList.
+            NOTE: This is NOT the number of elements the current array can hold. It is the number of elements the array currently has.
+#### public List<E> subList(int fromIndex, int toIndex)
+    Variables:
+        int fromIndex:
+            The location at which to start creating this subList. The subList is created inclusive of the value at this index.
+        int toIndex:
+            The location at which to end creating this sublist. The subList is created exclusive of the value at this index.
+            This basically means that this variable could be equal to the number of values in this ArrayList, which, in turn, will produce all the values until the end.
+    Throws:
+        IndexOutOfBoundsException() if either or both of these indexes are out of bounds.
+        IllegalArgumentException() if fromIndex is greater than toIndex, preventing the ArrayList object from creating a subList.
+    Functionality:
+        This function creates a list with values that are extracted from the range of the provided indexes, if they are valid and in bound.
+#### public Object[] toArray()
+    Functionality:
+        This function creates a new array, copies the values in the current array up to the point where values actually exist by using the size variable, and returns that new array.
+        By doing so, it creates this new array that is accessible to the user without needing to depend on the ArrayList.
+        However, after that, the user will NOT be able to accommodate more space without actually manually creating a new array with more space and copying all the values into that new array.
+#### public <T> T[] toArray(T[] a)
+    Variables:
+        T[] a:
+            This is yet another generic array that has already been created by the user.
+    Throws:
+        NullPointerException() if no array 'a' is provided.
+    Functionality:
+        If no array 'a' is provided, the function throws a NullPointerException().
+        If an array IS provided, then the function checks if the provided array has enough space to accommodate all the values in this ArrayList.
+            If not, a new instance of an array with the appropriate size is created and assigned to array 'a'.
+        Once that is done, the values in the current array are copied into array 'a'.
+        Finally, if the array the user provided can still hold more values, the function sets them to null.
+        Then, the function simply returns the modified array 'a'.
+#### public String toString()
+    Functionality:
+        This overridden function creates a String implementation of this ArrayList through the user of the StringBuilder class in Java.
+        It creates a String representation using StringBuilder to build it to look like an ArrayList similar to as follows:
+            [item1, item2, item3, ..., itemN]
+        where this is an ArrayList with N items.
