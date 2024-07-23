@@ -374,43 +374,43 @@ This class is the implementation for the ArrayList data structure using generics
     If the Collection contains values, then for EACH element added, uses the private ensureCapacity() function above to make sure there is enough space for the element to go in.
     For each value added, increment the size by 1.
     Finally, since all is complete, return true.
-#### public boolean addAll(int index, Collection<? extends E> c)
+##### public boolean addAll(int index, Collection<? extends E> c)
     If no Collection is provided, throws a NullPointerException() with an error message stating that a Collection is required.
     If an index IS provided, but is out of bounds, throws an IndexOutOfBoundsException() with an error message stating that the provided index is out of bounds, INCLUDING the provided index.
     If all is valid, then, as a first step, converts the provided Collection into an array using the toArray() method in c.
     Afterwards, the program navigates to the END of the array representing this ArrayList, and, with each call to ensureCapacity(), moves the values one position to the right, ensuring a secure spot for the value to be added in this ArrayList.
-#### public void clear()
+##### public void clear()
     Simply empties this ArrayList, resetting it to be similar to when the user calls the default constructor 
         (i.e. List<E> list = new ArrayList<E>();)
-#### public Object clone()
+##### public Object clone()
     Creates a shallow clone of this ArrayList object.
-#### public boolean contains(Object o)
+##### public boolean contains(Object o)
     For starters, if no Object is provided by the user, throws a NullPointerException().
     If the user DOES provide an Object, searches for it.
     If found, immediately returns true.
     Until then, iterates through the rest of this list.
     If iteration finishes, then the provided Object was not found, so the program returns false.
-#### public boolean containsAll(Collection<?> c)
+##### public boolean containsAll(Collection<?> c)
     If no Collection is provided, throws a NullPointerException().
     If a Collection IS provided, but is empty, returns true.
     If one of the values in the Collection is not found in this ArrayList object, returns false immediately.
     If it iterates through the whole thing with no problems, returns true.
-#### public boolean equals(Object o)
+##### public boolean equals(Object o)
     If no Object is provided, throws a NullPointerException().
     If an Object IS provided, check if the Object provided is similar to or maybe even the same as the current ArrayList.
     If so, return true. Or else, return false.
-#### public E get(int index)
+##### public E get(int index)
     If an index is provided, but is out of bounds (i.e. It is less than 0 or greater than or equal to this ArrayList's current size), then the function throws an IndexOutOfBoundsException().
     If all is fine, then returns the value at the specified index in this array.
-#### public int hashCode()
+##### public int hashCode()
     Simply returns a hash code value for this ArrayList
-#### public int indexOf(Object o)
+##### public int indexOf(Object o)
     If no Object is provided, it throws a NullPointerException().
     If an Object IS provided, then it finds the location of the FIRST occurrence of that Object.
     If found, returns that location. Else, it returns -1.
-#### public boolean isEmpty()
+##### public boolean isEmpty()
     Returns true if this ArrayList is empty, false otherwise
-#### public Iterator<E> iterator()
+##### public Iterator<E> iterator()
     Returns an iterator that runs through the values in this ArrayList using the following variables and functions:
         Variables:
             private int currentIndex
@@ -423,11 +423,11 @@ This class is the implementation for the ArrayList data structure using generics
                 If not, then it saves the value at the specified index, increments the index, then returns that saved value.
             public void remove()
                 If the current index is not out of bounds, then it will remove the value at the specified index from this ArrayList.
-#### public int lastIndexOf(Object o)
+##### public int lastIndexOf(Object o)
     If no value is provided, it will throw a NullPointerException().
     If an Object IS provided, then it finds the location of the LAST occurrence of that Object.
     If found, returns that location. Else, it returns -1.
-#### public ListIterator<E> listIterator()
+##### public ListIterator<E> listIterator()
     Variables:
         private int currentIndex
             Keeps track of the index it will iterate next
@@ -454,7 +454,7 @@ This class is the implementation for the ArrayList data structure using generics
             If a value IS provided, adds the provided value into this ArrayList at the specified index by shifting all values one space to the right and then inserting it into the specified array. Then, it increments the size of this ArrayList.
         public void remove()
             Removes the value at the current index in this array and adjusts the current index accordingly.
-#### public ListIterator<E> listIterator(int index)
+##### public ListIterator<E> listIterator(int index)
     Variables:
         int index:
             This is the parameter to be provided by the user as to what location to start the iteration from.
@@ -486,7 +486,7 @@ This class is the implementation for the ArrayList data structure using generics
             If a value IS provided, adds the provided value into this ArrayList at the specified index by shifting all values one space to the right and then inserting it into the specified array. Then, it increments the size of this ArrayList.
         public void remove()
             Removes the value at the current index in this array and adjusts the current index accordingly.
-#### public E remove(int index)
+##### public E remove(int index)
     Variables:
         int index:
             This indicates the location at which to remove the value from this ArrayList.
@@ -494,7 +494,7 @@ This class is the implementation for the ArrayList data structure using generics
         IndexOutOfBoundsException() if the provided index is out of bounds.
     Functionality:
         This function removes the value at the provided index by shifting the values that follow one index forward,
-#### public boolean remove(Object o)
+##### public boolean remove(Object o)
     Variables:
         Object o:
             This is the object to find and remove the first occurrence of.
@@ -504,7 +504,7 @@ This class is the implementation for the ArrayList data structure using generics
         If a value IS provided, it searches for the first occurrence of it. 
             If the value is NOT found, then it returns false, indicating that no changes were made to this ArrayList.
             If the value IS found, then it shifts all the elements after that location one space to the left, overriding that value to be removed, which in turn gets removed, returning true.
-#### public boolean removeAll(Collection<?> c)
+##### public boolean removeAll(Collection<?> c)
     Variables:
         Collection<?> c:
             The Collection of values of unknown type to be removed if found in this ArrayList.
@@ -515,7 +515,7 @@ This class is the implementation for the ArrayList data structure using generics
         If a Collection IS provided, but has no values in it, the function returns false.
         If a value from this Collection has been found, the value will be removed from the array representing this ArrayList
         If the ArrayList is changed in any way, such that a value in the provided Collection has been found in this ArrayList, then the function returns true. Otherwise, the function returns false.
-#### public boolean retainAll(Collection<?> c)
+##### public boolean retainAll(Collection<?> c)
     Variables:
         Collection<?> c:
             The Collection of values of unknown type to be kept if found in this ArrayList.
@@ -525,7 +525,7 @@ This class is the implementation for the ArrayList data structure using generics
         If a Collection of values is not provided, then the function throws a NullPointerException().
         If a Collection IS provided, but has no values in it, the function clears this ArrayList by resetting it to default and returns true.
         If a value in the array representing this ArrayList is NOT found this Collection, it is removed from the array, by which the user will not see it in when printing this ArrayList.
-#### public E set(int index, E element)
+##### public E set(int index, E element)
     Variables:
         int index:
             The location at which to replace the existing value
@@ -539,12 +539,12 @@ This class is the implementation for the ArrayList data structure using generics
         If an index is provided, but is out of bounds, the function throws an IndexOutOfBoundsException().
         If both are valid, then the function accesses and saves the value at the specified index in a separate variable.
         Then, it replaces the value at the specified index with the new provided value.
-#### public int size()
+##### public int size()
     Functionality:
         There are no exceptions thrown or needed to be thrown for this one.
         It simply returns the number of values currently in this ArrayList.
             NOTE: This is NOT the number of elements the current array can hold. It is the number of elements the array currently has.
-#### public List<E> subList(int fromIndex, int toIndex)
+##### public List<E> subList(int fromIndex, int toIndex)
     Variables:
         int fromIndex:
             The location at which to start creating this subList. The subList is created inclusive of the value at this index.
@@ -556,12 +556,12 @@ This class is the implementation for the ArrayList data structure using generics
         IllegalArgumentException() if fromIndex is greater than toIndex, preventing the ArrayList object from creating a subList.
     Functionality:
         This function creates a list with values that are extracted from the range of the provided indexes, if they are valid and in bound.
-#### public Object[] toArray()
+##### public Object[] toArray()
     Functionality:
         This function creates a new array, copies the values in the current array up to the point where values actually exist by using the size variable, and returns that new array.
         By doing so, it creates this new array that is accessible to the user without needing to depend on the ArrayList.
         However, after that, the user will NOT be able to accommodate more space without actually manually creating a new array with more space and copying all the values into that new array.
-#### public <T> T[] toArray(T[] a)
+##### public <T> T[] toArray(T[] a)
     Variables:
         T[] a:
             This is yet another generic array that has already been created by the user.
@@ -574,7 +574,7 @@ This class is the implementation for the ArrayList data structure using generics
         Once that is done, the values in the current array are copied into array 'a'.
         Finally, if the array the user provided can still hold more values, the function sets them to null.
         Then, the function simply returns the modified array 'a'.
-#### public String toString()
+##### public String toString()
     Functionality:
         This overridden function creates a String implementation of this ArrayList through the user of the StringBuilder class in Java.
         It creates a String representation using StringBuilder to build it to look like an ArrayList similar to as follows:
