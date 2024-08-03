@@ -2,7 +2,24 @@
  
 ## Project Description
     
-    This Project is designed to demonstrate a few of the various data structures that exist in Java through implementing them. Those include AbstractCollection, AbstractList, AbstractSequentialList, Cloneable, Collection, Deque, Iterable, Iterator, ListIterator, Queue, RandomAccess, Serializable, List, ArrayList and LinkedList. For the LinkedList class, the implementation that will be followed is the DoublyLinkedList class as per what is followed in Java SE 7.
+    This Project is designed to demonstrate a few of the various data structures that exist in Java through implementing them. 
+    Those include: 
+        AbstractCollection, 
+        AbstractList, 
+        AbstractSequentialList, 
+        Cloneable, 
+        Collection, 
+        Deque, 
+        Iterable, 
+        Iterator, 
+        ListIterator, 
+        Queue, 
+        RandomAccess, 
+        Serializable, 
+        List, 
+        ArrayList,
+        LinkedList. 
+    For the LinkedList class, the implementation that will be followed is the DoublyLinkedList class as per what is followed in Java SE 7.
 
 ## Files and Functionalities
 
