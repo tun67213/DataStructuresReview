@@ -2,10 +2,7 @@
  
 ## Project Description
     
-    This Project is designed to demonstrate a few of the various data structures that exist in Java 
-    through implementing them. Those include ArrayList and LinkedList. For the LinkedList 
-    class, the implementation that will be followed is the DoublyLinkedList class as per 
-    what is followed in Java SE 7.
+    This Project is designed to demonstrate a few of the various data structures that exist in Java through implementing them. Those include AbstractCollection, AbstractList, AbstractSequentialList, Cloneable, Collection, Deque, Iterable, Iterator, ListIterator, Queue, RandomAccess, Serializable, List, ArrayList and LinkedList. For the LinkedList class, the implementation that will be followed is the DoublyLinkedList class as per what is followed in Java SE 7.
 
 ## Files and Functionalities
 
@@ -601,7 +598,7 @@ This class is the implementation for the ArrayList data structure using generics
 ### Functions
 #### public boolean add(E e)
     Throws:
-        NullPointerException() if no value is provided
+        NullPointerException() exception if no value is provided
     Returns:
         True by default if no exceptions are thrown
     Functionality:
@@ -616,8 +613,8 @@ This class is the implementation for the ArrayList data structure using generics
                 
 #### public void add(int index, E element)
     Throws:
-        NullPointerException() if no value is provided
-        IndexOutOfBoundsException() if index is provided, but is out of bounds
+        NullPointerException() exception if no value is provided
+        IndexOutOfBoundsException() exception if index is provided, but is out of bounds
     Functionality:
         If no element is provided, the function throws a NullPointerException() exception.
         If an index IS provided, but is out of bounds, then the function throws an IndexOutOfBoundsException() exception.
@@ -632,7 +629,7 @@ This class is the implementation for the ArrayList data structure using generics
         Lastly, the program will increment the size variable.
 #### public boolean addAll(Collection<? extends E> c)
     Throws:
-        NullPointerException() if no Collection of values is provided (i.e. c is null)
+        NullPointerException() exception if no Collection of values is provided (i.e. c is null)
     Returns:
         True if this Linked List has been modified.
         False otherwise.
@@ -642,8 +639,8 @@ This class is the implementation for the ArrayList data structure using generics
         If the collection contains values, then the function uses the collection's iterator to iterate through the values in the collection, and for each value, it will create a new Node and add it to this list. Finally, it will return true.
 #### public boolean addAll(int index, Collection<? extends E> c)
     Throws:
-        NullPointerException() if no Collection of values is provided (i.e. c is null)
-        IndexOutOfBoundsException() if index is provided, but is out of bounds (i.e. less than 0 or greater than the size of this Linked List)
+        NullPointerException() exception if no Collection of values is provided (i.e. c is null)
+        IndexOutOfBoundsException() exception if index is provided, but is out of bounds (i.e. less than 0 or greater than the size of this Linked List)
     Returns:
         True if this Linked List has been modified.
         False otherwise.
@@ -654,7 +651,358 @@ This class is the implementation for the ArrayList data structure using generics
             3) Once there, for each value returned by the Iterator, create a new Node, link it's next Node to point to the value that 'current' is pointing to as its 'next'. Then, link it's previous Node to that 'current' Node. Then, assign that next Node's 'previous' reference to this new Node. Finally, make current point to this new Node and assign current to point to this new Node.
 #### public void addFirst(E e)
     Throws:
-        NullPointerException() if no value is provided
+        NullPointerException() exception if no value is provided
     Functionality:
-        If no value is provided, then the function throws a NullPointerException() exception().
-        
+        If no value is provided, then the function throws a NullPointerException() exception.
+        If a value IS provided, then one of the following happens:
+            If head is null, then the program assigns the Node with the provided value as both the head Node and the tail Node.
+            If not, then it attaches the current head Node's previous to this new Node, and then this new Node's next to head, and then moves the head reference to this new Node.
+            Finally, it increments the size of this Linked List.
+#### public void addLast(E e)
+    Throws:
+        NullPointerException() exception if no value is provided
+    Functionality:
+        If no value is provided, then the function throws a NullPointerException() exception.
+        If a value IS provided, then one of the following happens:
+            If tail is null (we are checking tail this time because we are adding at the end), then the program assigns the Node with the provided value as both the head Node and the tail Node.
+            If not, then it attaches the current tail Node's next to this new Node, and then this new Node's previous to tail, and then moves the tail reference to this new Node.
+            Finally, if everything is successful, it increments the size of this Linked List.
+#### public void clear()
+    Functionality:
+        This function empties this Linked List by resetting the following three parameters:
+            int size: It sets the size equal to 0, which is what it is by default.
+            Node<E> head: It sets the head Node to null, which is what it is by default.
+            Node<E> tail: It sets the tail Node to null as well, which is what it is by default.
+        Basically, it resets it as if the user is calling the basic constructor.
+#### public Object clone()
+    Returns:
+        A shallow clone of this Linked List
+    Functionality:
+        This function returns a shallow copy of this Linked List.
+        When I say "this Linked List", I mean the linked list built by the user of this program.
+#### public boolean contains(Object o)
+    Throws:
+        NullPointerException() exception if no Object is provided
+    Returns:
+        true if this Object is found, false otherwise.
+    Functionality:
+        The program defines a Node called as 'current'.
+        Then, the function traverses the list using the condition that 'current' can't be null and its data cannot be the provided Object.
+        Until that condition is satisfied, the function moves the 'current' pointer to point to the next Node.
+        Once we reach the end of that while loop, we must simply have a return statement that checks if the Node 'current' we defined is null.
+            If it IS null, then the function returns false because that means the provided Object wasn't found and the whole list has been traversed.
+            If not, the function returns true, because that means the provided Object has been found.
+#### public boolean containsAll(Collection<?> c)
+    Throws:
+        NullPointerException() exception if no Collection is provided
+    Returns:
+        true if this Collection is empty or all the values in this Collection, false otherwise 
+    Functionality:
+        The program checks if all the values in the provided Collection are existent in this Linked List.
+        Using the Collection's iterator, it traverses through this Collection.
+            For each iteration, it also iterates through the whole Linked List to find the value.
+            If NOT found, returns false immediately.
+            If found, continues the loop.
+        If the loop has exited, then all values were found, returning true.
+#### public boolean equals(Object o)
+    Throws:
+        NullPointerException() exception if no Object is provided
+    Returns:
+        true if the provided Object is an exact match to this Linked List Object, false otherwise
+#### public Iterator<E> descendingIterator()
+    Returns:
+        an Iterator starting at the tail (end) of this Linked List and traversing backwards
+    Variables:
+        private Node<E> current
+            The Node that this descending Iterator is currently pointing to.
+        private int currentIndex
+            This is a variable that keeps track of the current location of the current pointer. 
+            It is used to find out if there are more values when traversing in the reverse direction. 
+    Functions:
+        public boolean hasNext():
+            Since this is a DESCENDING iterator, hasNext() checks if the current index is greater than or equal to 0.
+            If so, it returns true. If not, it returns false.
+        public E next():
+            As a first step, the function checks if a call to hasNext() returns false. 
+                If hasNext() returns false, the iterator throws a NoSuchElementException() exception.
+                If hasNext() returns true, then it saves the value in a variable, moves the pointer to the PREVIOUS location, and decrements the index variable.
+            Finally, it returns the saved value that this was currently pointing to.
+        public void remove():
+            If the current Node is the ONLY Node in this Linked List, it will simply reset this Linked List.
+            If not, then it will decrement the current index, and then make sure that the links to the previous Node and next Node are set to point to each other, disconnecting this Node from the Linked List.
+            Finally, it decrements the size.
+#### public E element()
+    Returns:
+        The value in the head Node if this Linked List is not empty.
+    Throws:
+        NoSuchElementException() exception if this Linked List is empty.
+#### public E get(int index)
+    Variables:
+        int index:
+            The location at which to retrieve the Node's value from
+    Throws:
+        IndexOutOfBoundsException() exception if index is provided, but is out of bounds
+    Returns:
+        The value at the specified index in this Linked List, given that the index is in bound
+#### public E getFirst()
+    Throws:
+        NoSuchElementException() exception if this Linked List is empty
+    Returns:
+        The value at the head Node in this Linked List
+#### public E getLast()
+    Throws:
+        NoSuchElementException() exception if this Linked List is empty
+    Returns:
+        The value at the tail Node in this Linked List
+#### public int hashCode()
+    Returns:
+        The hash code value for this Linked List
+#### public int indexOf(Object o)
+    Variables:
+        Object o:
+            The variable to find the location of the first occurrence of in this Linked List
+    Throws:
+        NullPointerException() if no Object is provided
+    Returns:
+        The location of the first occurrence of the provided Object or -1 if not found
+#### public boolean isEmpty()
+    Returns:
+        true if this Linked List is empty, false otherwise
+#### public Iterator<E> iterator()
+    Returns:
+        An iterator over the elements in this Linked List in the order presented in this List
+    Variables:
+        private Node<E> current:
+            This pointer tracks the current Node that is being pointed to by this iterator
+    Functions:
+        public boolean hasNext():
+            Returns true if the provided Node 'current' is not null, false otherwise.
+        public E next():
+            Checks if hasNext() is NOT true, and if so, throws a NoSuchElementException() exception.
+            Otherwise, saves in a variable the value at the Node 'current', and moves the pointer to the next Node.
+            Finally, it returns the value that was in the Node previously pointed to by 'current'.
+        public void remove():
+            If the Node 'current' is equal to null, then the function will throw a NullPointerException() exception indicating an empty Linked List.
+            If not, it will check if the previous Node is null, if so, then the current Node is the head, which will then be reassigned to the next Node before removal.
+#### public int lastIndexOf(Object o)
+    Variables:
+        Object o:
+            The item to find the location of the last occurrence of in this Doubly Linked List
+    Throws:
+        NullPointerException() exception if no element is provided.
+    Returns:
+        The location of the last occurrence of the provided Object in this Doubly Linked List, or -1 if not found
+#### public ListIterator<E> listIterator()
+    Function Dependencies:
+        This function is unique in that it implements the methods predefined by the ListIterator iterator that has been created.
+    Returns:
+        A list iterator over the elements in this Linked List.
+    Inside of call to class ListIterator<E> (i.e. return new ListIterator<E>()):
+        Variables:
+            private int currentIndex: An integer counter to keep track of the location in this LinkedList of the variable this ListIterator will return next.
+            private Node<E> current: Node variable that will keep track of the current node that this ListIterator will be pointing to
+        Constructor:
+            This in-built class has one constructor that initializes the variable 'currentIndex' to 0 and 'current' to head.
+        Functions:
+            public boolean hasNext():
+                Checks if the available currentIndex is less than the size of this LinkedList, and...
+                    If so, returns true.
+                    If not, returns false.
+            public E next():
+                The function hasNext() is called to check if there are any more elements to provide the user with (i.e. current isn't null).
+                    If not, the function throws a NoSuchElementException() exception stating that the iterator has reached the end of this list.
+                    Otherwise, it does the following things:
+                        1) Uses a variable called 'value' to save the data in 'current'.
+                        2) Moves 'current' to the next Node using 'current = current.next'.
+                        3) Increments currentIndex using 'currentIndex++'.
+                        4) And finally, it returns the value in the Node it was originally pointing to using 'return value;'
+            public boolean hasPrevious():
+                Checks if the available currentIndex is greater than 0, and...
+                    If so, returns true.
+                    If not, returns false.
+            public E previous():
+                The function hasPrevious() is called to check if there are any more elements to provide the user with (i.e. current isn't null).
+                    If not, the function throws a NoSuchElementException() exception stating that the iterator has reached the end of this list.
+                    Otherwise, it does the following things:
+                        1) Uses a variable called 'value' to save the data in 'current'.
+                        2) Moves 'current' to the previous Node using 'current = current.previous'.
+                        3) Decrements currentIndex using 'currentIndex--'.
+                        4) And finally, it returns the value in the Node it was originally pointing to using 'return value;'
+            public int nextIndex():
+                Returns the private variable currentIndex.
+            public int previousIndex():
+                Returns the previous index to the private variable currentIndex using 'currentIndex - 1'.
+            public void remove():
+                Removes the Node pointed to by the variable current, reassigning it to the previous Node and adjusting the size.
+            public void set(E e):
+                Throws:
+                    NullPointerException() exception if no value is provided
+                Functionality:
+                    If no value is provided, the function throws a NullPointerException() exception.
+                    If a value IS provided, it replaces the value already existent in the Node pointed to by current with the provided Node.
+#### public ListIterator<E> listIterator(int index)
+    Function Dependencies:
+        This function is unique in that it implements the methods predefined by the ListIterator iterator that has been created.
+    Variables:
+        int index
+            This integer value signifies the starting position for this List Iterator.
+    Throws:
+        IndexOutOfBoundsException() exception if an index is provided, but is out of bounds. 
+    Returns:
+        A list iterator over the elements in this Linked List, starting at the specified index.
+    Inside of call to class ListIterator<E> (i.e. return new ListIterator<E>(0)):
+        Variables:
+            private int currentIndex: An integer counter to keep track of the location in this LinkedList of the variable this ListIterator will return next.
+            private Node<E> current: Node variable that will keep track of the current node that this ListIterator will be pointing to
+        Constructor:
+            This in-built class has one constructor that initializes the variable 'currentIndex' to 0 and 'current' to head.
+        Functions:
+            public boolean hasNext():
+                Checks if the available currentIndex is less than the size of this LinkedList, and...
+                    If so, returns true.
+                    If not, returns false.
+            public E next():
+                The function hasNext() is called to check if there are any more elements to provide the user with (i.e. current isn't null).
+                    If not, the function throws a NoSuchElementException() exception stating that the iterator has reached the end of this list.
+                    Otherwise, it does the following things:
+                        1) Uses a variable called 'value' to save the data in 'current'.
+                        2) Moves 'current' to the next Node using 'current = current.next'.
+                        3) Increments currentIndex using 'currentIndex++'.
+                        4) And finally, it returns the value in the Node it was originally pointing to using 'return value;'
+            public boolean hasPrevious():
+                Checks if the available currentIndex is greater than 0, and...
+                    If so, returns true.
+                    If not, returns false.
+            public E previous():
+                The function hasPrevious() is called to check if there are any more elements to provide the user with (i.e. current isn't null).
+                    If not, the function throws a NoSuchElementException() exception stating that the iterator has reached the end of this list.
+                    Otherwise, it does the following things:
+                        1) Uses a variable called 'value' to save the data in 'current'.
+                        2) Moves 'current' to the previous Node using 'current = current.previous'.
+                        3) Decrements currentIndex using 'currentIndex--'.
+                        4) And finally, it returns the value in the Node it was originally pointing to using 'return value;'
+            public int nextIndex():
+                Returns the private variable currentIndex.
+            public int previousIndex():
+                Returns the previous index to the private variable currentIndex using 'currentIndex - 1'.
+            public void remove():
+                Removes the Node pointed to by the variable current, reassigning it to the previous Node and adjusting the size.
+            public void set(E e):
+                Throws:
+                    NullPointerException() exception if no value is provided
+                Functionality:
+                    If no value is provided, the function throws a NullPointerException() exception.
+                    If a value IS provided, it replaces the value already existent in the Node pointed to by current with the provided Node.
+#### public boolean offer(E e)
+    Variables:
+        E e
+            The value to be added as the tail (last element) of this Linked List
+    Throws:
+        NullPointerException() exception if no value was provided to offer to this Linked List
+    Returns:
+        True if this LinkedList was modified (i.e. the value was added), False otherwise
+    Functionality:
+        If the no exceptions are thrown (i.e. a value was provided), the Node containing the value is added at the tail of this Linked List.
+#### public boolean offerFirst(E e)
+    Variables:
+        E e
+            The value to be added as the head (first element) of this Linked List
+    Throws:
+        NullPointerException() exception if no value was provided to offer to this Linked List
+    Returns:
+        True if this LinkedList was modified (i.e. the value was added), False otherwise
+    Functionality:
+        If the no exceptions are thrown (i.e. a value was provided), the Node containing the value is added at the head of this Linked List.
+#### public boolean offerLast(E e)
+    Variables:
+        E e
+            The value to be added as the tail (last element) of this Linked List
+    Throws:
+        NullPointerException() exception if no value was provided to offer to this Linked List
+    Returns:
+        True if this LinkedList was modified (i.e. the value was added), False otherwise
+    Functionality:
+        If the no exceptions are thrown (i.e. a value was provided), the Node containing the value is added at the tail of this Linked List.
+#### public E peek()
+    Throws:
+        NoSuchElementException() exception if this Linked List is empty
+    Returns:
+        The value located at the head Node in this Linked List
+    Functionality:
+        If this Linked List is empty, the function throws a NoSuchElementException() exception.
+        If not, it returns the value in the head Node in this Linked List.
+#### public E peekFirst()
+    Returns:
+        null if this Linked List is empty,
+        The value located at the head Node in this Linked List
+#### public E peekLast()
+    Returns:
+        null if this Linked List is empty,
+        The value located at the tail Node in this Linked List
+#### public E poll()
+    Throws:
+        NoSuchElementException() exception if this Linked List is empty
+    Returns:
+        The value previously located at the Head Node of this Linked List
+    Functionality:
+        The function removes the Node that was designated as the head in this Linked List, reassigning it to the next Node if any, or emptying the list by setting head and tail to null.
+#### public E pollFirst()
+    Returns:
+        null if this Linked List is empty,
+        The value located in the Node that was previously head
+    Functionality:
+        If this Linked List is empty, the function returns null. 
+        If not, it removes the Node that was head by moving the pointer to the next available Node and removing the previous head by severing its connections to the rest of this Linked List.
+#### public E pollLast()
+    Returns:
+        null if this Linked List is empty.
+        The value located in the Node that was previously tail
+    Functionality:
+        If this Linked List is empty, the function returns null. 
+        If not, it removes the Node that was tail by moving the pointer to the previous available Node and removing the previous tail by severing its connections to the rest of this Linked List.
+#### public E pop()
+    Throws:
+        EmptyStackException() exception if this Linked List is empty
+    Returns:
+        The value that was in the Node that was previous Head
+    Functionality:
+        If this Linked List is empty, the function throws an EmptyStackException() exception.
+        If not, then the Linked List removes the first Node of this Linked List represented by a stack.
+#### public void push(E e)
+    Variables:
+        E e
+            The value to push onto the top of the stack representing this Linked List
+    Throws:
+        NullPointerException() exception if no value is provided
+    Functionality:
+        If no value is provided, the function throws a NullPointerException() exception.
+        If a value IS provided, the function creates a new Node with the provided value and attaches it as the first Node of this Linked List.
+#### public E remove()
+    Throws:
+        NullPointerException() exception if this Linked List is empty
+    Returns:
+        The value in the Node previously pointing to head
+    Functionality:
+        If this Linked List is empty, the function throws a NullPointerException() exception.
+        The function then creates a variable to save the Node that is being removed, which is the head Node.
+        Then, it does a check and does stuff accordingly:
+            If this value is the ONLY value in this Linked List, then it sets both head and tail to null.
+            Otherwise, it moves the head pointer to the next Node, sets the removing Node's next value to null, sets the head Node's previous value to null, and decrements the size by 1.
+#### public E remove(int index)
+    Variables:
+        int index:
+            The location at which to remove a value from
+    Throws:
+        IndexOutOfBoundsException() exception if an index IS provided, but is out of bounds.
+    Returns:
+        The value previously at the provided index
+    Functionality:
+        If the provided index is out of bounds, the function throws an IndexOutOfBoundsException() exception.
+        If an index IS provided and is valid, then the function first creates a variable by the name 'removingNode' and initializes it to the head Node.
+        Then, it navigates to the Node to be removed by using a for-loop.
+        After that, it does the following steps:
+            1) If the removing Node is the ONLY Node in this Linked List, then the function resets BOTH head and tail to null
+            2) If the removing Node's previous Node is null (i.e., it is the head Node), then the function moves the head pointer to the next Node and unlinks the old head Node from this Linked List.
+            3) If the removing Node's next Node is null (i.e., it is the tail Node), then the function moves the tail pointer to the previous Node and unlinks the old tail Node from this Linked List.
+        Then, it reduces the size by one using 'this.size--'.
+        Finally, it returns the value removed from this Linked List.
