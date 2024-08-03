@@ -1118,7 +1118,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     {
         if(head == null)
         {
-            throw new NullPointerException("This Linked List is empty");
+            throw new NoSuchElementException("This Linked List is empty");
         }
         return head.data;
     }
