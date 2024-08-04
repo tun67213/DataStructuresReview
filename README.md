@@ -375,6 +375,12 @@ This class is the implementation for the ArrayList data structure using generics
 ##### private void ensureCapacity()
     Checks if the number of elements currently in this array fill up the array, and if so, creates a new array, allocating half the amount more space in the array
 ##### public boolean add(E e)
+###### Variables
+    E e:
+        The value to be added to the end of this ArrayList object
+###### Throws
+    NullPointerException() exception if no value e is provided by this user
+###### Functionality
     If no element e is provided, throws a NullPointerException() exception with an error message stating that an element is required.
     If an element is provided, uses the ensureCapacity() function above to make sure that enough space is there in the array, and then adds it to the end of a list of values already in this array, if any.
     At the end, it increments the size of this ArrayList by 1.
@@ -1039,4 +1045,12 @@ This class is the implementation for the ArrayList data structure using generics
         Object o:
             The item to find and remove the first occurrence of
     Throws:
-        NullPointerException() exception if no 
+        NullPointerException() exception if no Object is provided
+    Returns:
+        True if this Linked List has been modified, False otherwise
+    Functionality:
+        If the user does not provide any Object, i.e. the user inputs 'remove(null)', the function will throw a NullPointerException() exception.
+        If the user DOES provide an Object, the Linked List will internally create a Node starting at the head.
+        After that, it will iterate through the list up until there are no more values to iterate through, OR the search data has been found.
+        If the search data was not found, the function immediately returns false.
+        Otherwise, it uses that Node as the Object and uses itself to remove itself from this Linked List using references around it.
