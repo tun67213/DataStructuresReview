@@ -632,6 +632,11 @@ This class is the implementation for the ArrayList data structure using generics
             3) Once all of this is done, it will increment the size variable.
                 
 #### public void add(int index, E element)
+    Variables:
+        int index:
+            The location at which to add the provided value
+        E element:
+            The value to add to this Linked List
     Throws:
         NullPointerException() exception if no value is provided
         IndexOutOfBoundsException() exception if index is provided, but is out of bounds
@@ -648,6 +653,9 @@ This class is the implementation for the ArrayList data structure using generics
         Once done with that, it will make the current Node have its pointer to the next Node be this new Node.
         Lastly, the program will increment the size variable.
 #### public boolean addAll(Collection<? extends E> c)
+    Variables:
+        Collection<? extends E> c:
+            A collection of values to add to the end of this Linked List, in the order returned by the Collection's iterator
     Throws:
         NullPointerException() exception if no Collection of values is provided (i.e. c is null)
     Returns:
