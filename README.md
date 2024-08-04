@@ -614,6 +614,9 @@ This class is the implementation for the ArrayList data structure using generics
 
 ### Functions
 #### public boolean add(E e)
+    Variables:
+        E e:
+            The generic value to be added to this Linked List Object.
     Throws:
         NullPointerException() exception if no value is provided
     Returns:
@@ -1023,3 +1026,9 @@ This class is the implementation for the ArrayList data structure using generics
             3) If the removing Node's next Node is null (i.e., it is the tail Node), then the function moves the tail pointer to the previous Node and unlinks the old tail Node from this Linked List.
         Then, it reduces the size by one using 'this.size--'.
         Finally, it returns the value removed from this Linked List.
+#### public boolean remove(Object o)
+    Variables:
+        Object o:
+            The item to find and remove the first occurrence of
+    Throws:
+        NullPointerException() exception if no 
