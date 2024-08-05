@@ -1050,7 +1050,7 @@ This class is the implementation for the ArrayList data structure using generics
         True if this Linked List has been modified, False otherwise
     Functionality:
         If the user does not provide any Object, i.e. the user inputs 'remove(null)', the function will throw a NullPointerException() exception.
-        If the user DOES provide an Object, the Linked List will internally create a Node starting at the head.
-        After that, it will iterate through the list up until there are no more values to iterate through, OR the search data has been found.
+        If the user DOES provide an Object, the Linked List will internally create a Node starting at the head and will iterate through the list up until there are no more values to iterate through, OR the search data has been found.
         If the search data was not found, the function immediately returns false.
-        Otherwise, it uses that Node as the Object and uses itself to remove itself from this Linked List using references around it.
+        Otherwise, it uses that Node as the Object and uses itself to relink its previous and next Nodes together and unlink itself from this Linked List completely.
+        Finally, it decrements the size and returns true.
