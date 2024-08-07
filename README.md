@@ -1054,3 +1054,80 @@ This class is the implementation for the ArrayList data structure using generics
         If the search data was not found, the function immediately returns false.
         Otherwise, it uses that Node as the Object and uses itself to relink its previous and next Nodes together and unlink itself from this Linked List completely.
         Finally, it decrements the size and returns true.
+#### public E removeFirst()
+    Throws:
+        NoSuchElementException() if this Linked List is empty
+    Returns:
+        The value in the Node previously identified as 'head'
+    Functionality:
+        If this Linked List is empty, i.e. the head Node is null, the function throws a NoSuchElementException() exception.
+        The function saves the head Node in a variable called removingNode.
+            Next, if removingNode is the ONLY Node in this Linked List, it sets both head AND tail to null, emptying this Linked List.
+            If not, then the function simply moves the head to the next Node and sets the next reference to this removing Node to null.
+            Then, before doing anything else, it sets the new head Node's previous reference to null so that the garbage collector can collect the old head Node and get rid of it.
+        Finally, if all goes well without any exceptions being thrown, the function decrements the size variable using 'size--;'.
+        Last, but not least, the function returns the value that was in the Node previously referenced as 'head'.
+#### public boolean removeFirstOccurrence(Object o)
+    Variables:
+        Object o: 
+            the value to find and remove the first occurrence of from this Linked List
+    Throws:
+        NullPointerException() exception if no Object is provided to find and remove
+    Returns:
+        True if this Linked List has been modified, False otherwise
+    Functionality:
+        If no Object is provided by the user, the function throws a NullPointerException() exception.
+        If an Object is provided, the function does the following steps:
+            1) Define a variable called removingNode and initialize it to the head Node (i.e. Node<E> removingNode = head;)
+            2) Using a while-loop, iterate through this Linked List until removingNode is null OR removingNode's data is the value we are looking for.
+                1) If either condition is satisfied, the program exits this while loop.
+            3) Next we check if removingNode is null, because if so, the value was NOT found and we can immediately return false.
+            4) If not, we do exactly what we did for remove(int index) AND remove(Object o), where we modify the references between Nodes in this Linked List.
+#### public E removeLast()
+    Throws:
+        NoSuchElementException() exception if this Linked List is empty
+    Returns:
+        The value in the Node previously identified as 'tail'
+    Functionality:
+        If this Linked List is empty, i.e. tail is null, the function throws a NoSuchElementException() exception.
+        The function saves the tail Node in a variable called removingNode.
+            Next, using 'tail.previous' as a reference, it checks if the value is the ONLY Node in this Linked List, and if so, sets head and tail to null.
+            If not, then it moves the tail pointer to the previous Node and unlinks the Node to be removed by cutting its reference to the new tail Node.
+        Finally, it decrements the size by one, since all has been successful.
+#### public boolean removeLastOccurrence(Object o)
+    Variables:
+        Object o: the value to find and remove from this Linked List
+    Throws:
+        NullPointerException() exception if no value is provided
+    Returns:
+        True if this Linked List has been modified, false otherwise
+    Functionality:
+        This function traverses this Linked List from tail to head to find the last occurrence of the provided Object using a while loop.
+        If the Object is not found, i.e. the removingNode variable is now null, then the function returns false immediately.
+        Otherwise, it will proceed to removal similar to what was done in removeFirstOccurrence(Object o).
+#### public boolean removeAll(Collection<?> c)
+    Variables:
+        Collection<?> c: The Collection of values to remove from this Linked List
+    Throws:
+        NullPointerException() exception if no Collection is provided
+    Returns:
+        True if this Linked List has been modified, false otherwise
+    Functionality:
+        This function will throw a NullPointerException() exception if no Collection of values is provided.
+        If the provided Collection is empty, the function will return false immediately.
+        Next, the function creates a boolean variable to track if this Linked List has been modified with the name 'listModified'.
+        If a Collection IS provided, then the function first calls its iterator.
+        Then, it checks if any of the values are found by iterating through this Linked List Node by Node.
+        If found, it moves the pointer to the previous Node, removes that Node from this List by linking its previous and next Nodes together, sets 'listModified' to true, and decrements the size.
+        Once done, it will return the value 'listModified' to indicate to the user whether the operation has successfully changed this Linked List Object or not.
+#### public boolean retainAll(Collection<?> c)
+    Variables:
+        Collection<?> c: The Collectino of values to keep if existent in this Linked List
+    Throws:
+        NullPointerException() exception if no Collection is provided
+    Returns:    
+        True if this Linked List has been modified, false otherwise
+    Functionality:
+        This function will throw a NullPointerException() exception if no Collection of values is provided.
+        If the provided Collection is empty, since the function's goal is to keep any values in this Linked List and remove anything else, it will clear all values from this Linked List and empty it out by resetting it to defaults.
+        Otherwise, the function will check through each value to see if it is 
