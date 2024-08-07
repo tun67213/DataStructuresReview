@@ -1655,7 +1655,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
         Node<E> removingNode = null;
         while(current != null)
         {
-            if(c.contains(current.data))
+            if(!c.contains(current.data))
             {
                 listModified = true;
                 removingNode = current;
