@@ -1130,4 +1130,62 @@ This class is the implementation for the ArrayList data structure using generics
     Functionality:
         This function will throw a NullPointerException() exception if no Collection of values is provided.
         If the provided Collection is empty, since the function's goal is to keep any values in this Linked List and remove anything else, it will clear all values from this Linked List and empty it out by resetting it to defaults.
-        Otherwise, the function will check through each value to see if it is 
+        Otherwise, the function will check through each value to see if it is existent in the provided Collection, and if not, will remove it from this Linked List.
+#### public E set(int index, E element)
+    Variables:
+        int index: 
+            the location at which to set a new value
+        E element: 
+            the replacement value to give to the provided element
+    Throws:
+        NullPointerException() exception if no replacement value is provided
+        IndexOutOfBoundsException() if index is provided, but is out of bounds
+    Returns:
+        The value previously at the provided index
+    Functionality:
+        If no replacement value is provided, the function throws a NullPointerException() exception.
+        If an index IS provided, but is out of bounds, the function throws an IndexOutOfBoundsException() exception.
+        Otherwise, the function does the following steps:
+            1) Declare a Node called 'current' and assign head to it.
+            2) Navigate to the Node at the provided index using a for-loop.
+            3) Declare a variable called 'value' and assign the data in 'current' to it.
+            4) Use 'current.data' to assign the new value to that Node.
+            5) Finally, return 'value' (i.e. the data that was previously in the Node at the provided index).
+#### public int size()
+    Returns:
+        The current size of this Linked List
+#### public List<E> subList(int fromIndex, int toIndex)
+    Variables:
+        int fromIndex: 
+            variable indicating the starting point from which to create this subList based on this Linked List object
+        int toIndex:
+            variable indicating up to, but not including, which to create this subList based on this Linked List object
+    Throws:
+        IndexOutOfBoundsException() exception if both or either of the variables are out of bounds
+        IllegalArgumentException() exception if fromIndex is greater than toIndex
+    Returns:
+        A subList with values from the provided index, given the indexes are in range
+    Functionality:
+        The function throws an IndexOutOfBoundsException() exception if both or either of the indexes are out of bounds.
+        If they are in bound, but fromIndex is greater than toIndex, then the function throws an IllegalArgumentException() exception.
+        If both are fine, it creates a new Linked List, adds values in those indexes to this Linked List, and then returns it.
+            (Note: the size of this new Linked List will be incremented automatically since it is using the 'add()' method)
+#### public Object[] toArray()
+    Returns:
+        An array containing all the values in this Linked List, in the order they are returned by the iterator pertaining to this Linked List
+#### public <T> T[] toArray(T[] a)
+    Variables:
+        T[] a:
+            array into which to copy the elements in this List
+    Throws:
+        NullPointerException() exception if no array is provided(i.e. toArray(null); not toArray() (this would work by default))
+    Returns:
+        an array containing elements in this Linked List
+    Functionality:
+        Similar to the toArray() method, this function returns an array with the provided values.
+        However, the difference is that the runtime of the provided array is meant to match that of the array the user provides.
+        If no array is provided, then the function throws a NullPointerException() exception.
+        If an array IS provided, then the function copies the values in this Linked List into THAT array and returns it back to the user.
+#### public String toString()
+    Returns:
+        a printable String version of this Linked List that allows the user to read this Linked List
