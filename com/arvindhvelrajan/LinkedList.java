@@ -1743,6 +1743,14 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
         {
             throw new IndexOutOfBoundsException("Indexes " + fromIndex + " and " + toIndex + " are out of bounds");
         }
+        if(fromIndex < 0)
+        {
+            throw new IndexOutOfBoundsException("Index " + fromIndex + " is out of bounds");
+        }
+        if(toIndex > this.size)
+        {
+            throw new IndexOutOfBoundsException("Index " + toIndex + " is out of bounds");
+        }
         Node<E> current = head;
         for(int i = 0; i < fromIndex; i++)
         {
