@@ -1796,6 +1796,10 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
     @Override
     public <T> T[] toArray(T[] a)
     {
+        if(a == null)
+        {
+            throw new NullPointerException("You MUST provide a valid and existing array to copy into");
+        }
         if(a.length < this.size)
         {
             a = (T[]) java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), this.size);
