@@ -1751,6 +1751,10 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>,
         {
             throw new IndexOutOfBoundsException("Index " + toIndex + " is out of bounds");
         }
+        if(fromIndex > toIndex)
+        {
+            throw new IllegalArgumentException("The first index, " + fromIndex + ", cannot be greater than the second index, " + toIndex);
+        }
         Node<E> current = head;
         for(int i = 0; i < fromIndex; i++)
         {
